@@ -4,6 +4,18 @@ O sistema é dividido em versões, de forma que cada incremento adiciona funcion
 Vale ressaltar que, por mais que a metodologia escolhida seja a incremental, as demais(cascata e reúso) 
 também podem estar normalmente mescladas a estas.
 
+O processo segue o seguinte fluxo:
+
+                          Especificação  <---> versão inicial   
+                                ↑↓            
+Descrição do esboço ---> Desenvolvimento <---> versões intermediárias
+                                ↑↓
+                            Validação    ----> versão final
+
+Onde entra em loop nas etapas de Desenvolvimento, Especificação e Validação, sendo a principal parte
+do desenvolvimento. 
+
+
 # Principais Atividades
 
 - Especificação: define as funcionalidades e as restrições de
@@ -18,13 +30,4 @@ atender às especificações.
 - Evolução: o software deve evoluir para atender às mudanças do
 cliente.
 
-O processo segue o seguinte fluxo:
-
-                          Especificação  <---> versão inicial   
-                                ↑↓            
-Descrição do esboço ---> Desenvolvimento <---> versões intermediárias
-                                ↑↓
-                            Validação    ----> versão final
-
-Onde entra em loop nas etapas de Desenvolvimento, Especificação e Validação, sendo a principal parte
-do desenvolvimento. 
+# Atividades Básicas de Processo
