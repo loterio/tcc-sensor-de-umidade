@@ -25,16 +25,14 @@ do desenvolvimento.
 
 ## Principais Atividades
 
-- Especificação: define as funcionalidades e as restrições de
+- **Especificação:** define as funcionalidades e as restrições de
 funcionamento do software.
 
-- Desenvolvimento: o software deve ser implementado para
+- **Desenvolvimento:** o software deve ser implementado para
 atender às especificações.
 
-- Validação: o software deve ser validado para garantir que atenda
+- **Validação:** o software deve ser validado para garantir que atenda
 às demandas do cliente.
 
-- Evolução: o software deve evoluir para atender às mudanças do
+- **Evolução:** o software deve evoluir para atender às mudanças do
 cliente.
-
-## Atividades Básicas de Processo
