@@ -23,8 +23,8 @@ O processo segue o seguinte fluxo:
                                     ↑↓
                                 Validação    ----> versão final
 
-Onde entra em loop nas etapas de **Desenvolvimento**, **Especificação** e **Validação**, sendo a principal parte
-do desenvolvimento. 
+Onde entra em loop nas etapas de **Desenvolvimento**, **Especificação** e **Validação**, sendo a principal parte 
+a do desenvolvimento. 
 
 
 ## Principais Atividades
