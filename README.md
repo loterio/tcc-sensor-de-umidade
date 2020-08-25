@@ -1,6 +1,8 @@
-﻿Fabio Vitor Loterio, estudante do Curso Técnico em Informática Integrado ao Ensino Médio, IFC - campus Rio do Sul. E-mail: vitorloterio@gmail.com
+﻿**Fabio Vitor Loterio**, estudante do Curso Técnico em Informática Integrado ao Ensino Médio, **IFC - campus Rio do Sul**. 
+ E-mail: vitorloterio@gmail.com
  
- Henrique Borges dos Santos, estudante do Curso Técnico em Informática Integrado ao Ensino Médio, IFC - campus Rio do Sul. E-mail: henrique.10agr@gmail.com.
+ **Henrique Borges dos Santos**, estudante do Curso Técnico em Informática Integrado ao Ensino Médio, **IFC - campus Rio do Sul**. 
+ E-mail: henrique.10agr@gmail.com.
 
 # Introdução
 
