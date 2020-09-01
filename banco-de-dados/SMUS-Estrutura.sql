@@ -1,4 +1,5 @@
-CREATE DATABASE SMUS; # Sistema de Monitoramento da Umidade do Solo 
+# Sistema de Monitoramento da Umidade do Solo 
+CREATE DATABASE SMUS; 
 USE SMUS;
 
 CREATE TABLE sensor (
