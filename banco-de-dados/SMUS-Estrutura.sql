@@ -1,5 +1,3 @@
-# 03/09/2020
-
 DROP DATABASE SMUS;
 # Sistema de Monitoramento da Umidade do Solo 
 CREATE DATABASE SMUS; 
