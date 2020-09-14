@@ -47,7 +47,9 @@ INSERT INTO quadroTerra(nome) VALUES
 ("perto estrada geral");
 
 INSERT INTO cliente(login,email,senha) VALUES 
-('Henrique', 'Henrique@gmail.com', '123'); 
+('Henrique', 'Henrique@gmail.com', '123'),
+('fabio','vitor@gmail.com','ashw'),
+('nelso','nl@hotmail.com','abc123'); 
 
 INSERT INTO leitura(dataHora,idSensor,idQuadroTerra,umidade) VALUES 
 ('2020-09-02 12:05:36',1,1,31.50),
