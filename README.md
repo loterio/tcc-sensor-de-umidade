@@ -63,7 +63,7 @@ São eles:
 
 Deverão, sob as normas acima, ser montados sempre da seguinte forma:
 
-> < funcionalidade > - < estado do desenvolvimento > ( observação )
+> **<funcionalidade> - <estado do desenvolvimento> (observação)**
 
 
 
