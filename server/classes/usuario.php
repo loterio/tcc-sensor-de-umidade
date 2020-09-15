@@ -25,20 +25,9 @@
         $res->bindparam(":loginUsuario",$nome);
         $res->execute();
         $resultado = $res->fetch(PDO::FETCH_ASSOC);
-        $resultado = json_encode($resultado);
-        // $resultado = json_decode($resultado);
-
-        // echo count($resultado);      # retorna 2, usuario(login, email)
-
-        // if(count($resultado) = 2){
-        //   $r = true;
-        //   return $r;               nesse trecho tentei fazer uma verificação
-        // }else{                     que ia retornar TRUE se $resultado = 2
-        //   $r = false;              o que quer dizer que a consulta do banco 
-        //   return $r;               retornaria só um registro, sendo este o único no BD.    
-        // }                          mas dá erro kkk
-        echo $resultado;
-        // return $resultado;
+        $resultado = json_encode($resultado);kkk
+        // echo $resultado;
+        return $resultado;
     }
 
     // criaUsuario() - com os dados do formulário, cria um novo registro de usuário;
