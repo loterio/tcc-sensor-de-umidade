@@ -27,7 +27,7 @@ Onde entra em loop nas etapas de **Desenvolvimento**, **Especificação** e **Va
 a do desenvolvimento. 
 
 
-## Principais Atividades
+## Principais Atividades do Desenvolvimento
 
 - **Especificação:** define as funcionalidades e as restrições de
 funcionamento do software.
@@ -40,3 +40,10 @@ atender às especificações.
 
 - **Evolução:** o software deve evoluir para atender às mudanças do
 cliente.
+
+## Sobre o Software
+
+O projeto conta com a junção de serviços via **Arduino**, **Web Service** e uma **Aplicação Móvel**, ondes estes interagem entre si, fornecendo informações, enviando e recebendo comandos.
+Cada serviço assume uma função bastante específica, dependendo uns dos outros para atingirem o resultado final esperado: Uma rede de sensores que meçam a umidade do solo, enviem estes dados a um servidor web(Web Service) e a aplicação móvel possa consultá-los, para aí então disponibilizá-los através de uma interface para o agricultor.
+
+
