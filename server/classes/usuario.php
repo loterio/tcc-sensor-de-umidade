@@ -17,16 +17,12 @@
 
     // getIdUsuario() - verifica e retorna se um usuário já está cadastrado no sistema;
     
-    function getIdusuario($nome,$email){
-      $nome = "%".$nome."%";
-      $r;
+    function getIdUsuario($nome){
 
-        $res = $this->pdo->prepare("SELECT login, email 
+        $res = $this->pdo->prepare("SELECT id, login, email 
                                     FROM usuario 
-                                    WHERE login LIKE :loginusuario 
-                                    AND email = :email;");
-        $res->bindparam(":loginusuario",$nome);
-        $res->bindparam(":email",$email);
+                                    WHERE login = :loginUsuario;");
+        $res->bindparam(":loginUsuario",$nome);
         $res->execute();
         $resultado = $res->fetch(PDO::FETCH_ASSOC);
         $resultado = json_encode($resultado);
@@ -41,8 +37,8 @@
         //   $r = false;              o que quer dizer que a consulta do banco 
         //   return $r;               retornaria só um registro, sendo este o único no BD.    
         // }                          mas dá erro kkk
-
-        return $resultado;
+        echo $resultado;
+        // return $resultado;
     }
 
     // criaUsuario() - com os dados do formulário, cria um novo registro de usuário;
@@ -100,6 +96,8 @@
 
 $us = new Usuario('fabio','vitor@gmail.com','ashw');
 
-$us->alteraUsuario('Fabio Loterio','vitorloterio@gmail.com','schneider');
+// $us->alteraUsuario('Fabio Loterio','vitorloterio@gmail.com','schneider');
+// $us->criaUsuario('mario','super@gmail.com','111');
+$us->getIdUsuario('fabio');
 
 ?>
