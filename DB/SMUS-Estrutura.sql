@@ -3,7 +3,7 @@ DROP DATABASE SMUS;
 CREATE DATABASE SMUS; 
 USE SMUS;
 
-CREATE TABLE sensor (
+CREATE TABLE IF NOT EXISTS sensor (
 	id int auto_increment not null,
     umidade float not null,
     latitude float not null,
@@ -11,13 +11,13 @@ CREATE TABLE sensor (
     primary key(id)
 );
 
-CREATE TABLE quadroTerra (
+CREATE TABLE IF NOT EXISTS quadroTerra (
 	id int auto_increment not null,
     nome varchar(45) not null,
     primary key(id)
 );
 
-CREATE TABLE leitura (
+CREATE TABLE IF NOT EXISTS leitura (
 	dataHora timestamp not null,
     idSensor int not null,
     idQuadroTerra int not null,
@@ -27,11 +27,12 @@ CREATE TABLE leitura (
     foreign key(idQuadroTerra) references quadroTerra(id)
 );
 
-CREATE TABLE cliente (
+CREATE TABLE IF NOT EXISTS cliente (
+	id int auto_increment not null,
 	login varchar(40) not null unique,
 	email varchar(45) not null unique,
     senha varchar(30) not null,
-    primary key(login)
+    primary key(id)
 );
 
 INSERT INTO sensor(umidade, latitude, longitude) VALUES
