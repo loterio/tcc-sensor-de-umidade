@@ -28,8 +28,8 @@ CREATE TABLE leitura (
 );
 
 CREATE TABLE cliente (
-	login varchar(40) not null,
-	email varchar(45) not null,
+	login varchar(40) not null unique,
+	email varchar(45) not null unique,
     senha varchar(30) not null,
     primary key(login)
 );

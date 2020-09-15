@@ -41,17 +41,44 @@
         // }                          mas dá erro kkk
 
         return $resultado;
-    } 
-  }
+    }
 
-$us = new Usuario('fabio','vitor@gmail.com');
+    // criaCliente() - com os dados do formulário, cria um novo registro de usuário;
 
-$us->getIdCliente('fabio','vitor@gmail.com');
-
-// criaCliente() - com os dados do formulário, cria um novo registro de usuário;
-
+    function criaUsuario($login, $email, $senha) {
+      $res = $this->pdo->prepare("INSERT INTO cliente
+                                ( login,
+                                  email,
+                                  senha )
+                                  VALUES (:login, 
+                                          :email, 
+                                          :senha)");
+      $res->bindparam(":login", $login);
+      $res->bindparam(":email", $email);
+      $res->bindparam(":senha", $senha);
+      $res->execute();
+    }
 
 // alteraCliente(emailNovo, nomeNovo, senhaNova, senha) - altera os dados do usuário desejado.
+    
+    function alteraUsuario($login, $email, $senha) {
+
+      $res = $this->pdo->prepare("UPDATE cliente
+                              SET login = :login,
+                                  email = :email,
+                                  senha = :senha                    # atualiza, passando os dados que estão nos parâmetros da func
+                                  WHERE login LIKE :loginAtual      # para o registro que tiver os dados iguais aos valores
+                                  AND email LIKE :emailAtual;");    # privados da Classe(login e email).
+      $res->bindparam(":login", $login);
+      $res->bindparam(":email", $email);
+      $res->bindparam(":senha", $senha);
+      $res->bindparam(":loginAtual", $this->login);
+      $res->bindparam(":emailAtual", $this->email);
+      $res->execute();
+    }
+
+  } #fecha a classe Usuario
+
 
 
   // try{
@@ -66,5 +93,11 @@ $us->getIdCliente('fabio','vitor@gmail.com');
 	// } catch(PDOException $e) {
 	// 	echo '<strong>Error:</strong> '.$e->getMessage();
   // }  
+
+# ------------------------ TESTES ------------------------
+
+$us = new Usuario('fabio','vitor@gmail.com');
+
+$us->alteraUsuario('Fabio Loterio','vitorloterio@gmail.com','schneider');
 
 ?>
