@@ -46,4 +46,15 @@ cliente.
 O projeto conta com a junção de serviços via **Arduino**, **Web Service** e uma **Aplicação Móvel**, ondes estes interagem entre si, fornecendo informações, enviando e recebendo comandos.
 Cada serviço assume uma função bastante específica, dependendo uns dos outros para atingirem o resultado final esperado: Uma rede de sensores que meçam a umidade do solo, enviem estes dados a um servidor web(Web Service) e a aplicação móvel possa consultá-los, para aí então disponibilizá-los através de uma interface para o agricultor.
 
+## Commits
+
+Os **commits** do projeto seguem um padrão determinado pelos desenvolvedores. Isso tem o intuito de causar uma melhor localização e organização do projeto.
+Basicamente, as mensagens devem ser elaboradas em 3 partes. A primeira deve referênciar qual a funcionalidade que está sendo desenvolvida em questão. A segunda deve especificar em qual estágio está esse desenvolvimento. A terceira e última parte da mensagem é opcional e deve conter detalhes sobre o desenvolvimento.
+Os commits devem ser feitos de maneira mais sucinta possível e para isso foram denominados alguns padrões. 
+São eles:
+
+|  Prefixo  |   Descrição   |
+|:---------:|  :---------:  |  
+|   **d**   |desenvolvimento|               
+|   **ok**  |  finalizado   |
 
