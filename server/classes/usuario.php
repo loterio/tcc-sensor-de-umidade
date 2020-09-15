@@ -12,7 +12,7 @@
       $this->login = $login;
       $this->email = $email;
       $this->senha = $senha;
-      $this->pdo = new PDO(MYSQL, USER, PASSWORD); # não consegui usar o Conexao.php e fiz assim
+      $this->pdo = new PDO(MYSQL, USER, PASSWORD);
     }
 
     // getIdUsuario() - verifica e retorna se um usuário já está cadastrado no sistema;
