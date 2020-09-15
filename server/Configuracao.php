@@ -15,6 +15,7 @@
     define('MYSQL', 'mysql:host='.HOST.';port='.PORT.';dbname='.DBNAME.';charset=utf8');
 
     // Geral da Aplicação
-    define('NOME_DO_PROJETO','');
-    define('DESCRICAO_DO_PROJETO','');
+    define('NOME_DO_PROJETO','SMUS');
+    define('DESCRICAO_DO_PROJETO','Projeto voltado para agricultura 
+            sobre monitoramento de umidade na cultura de cebola');
 ?>

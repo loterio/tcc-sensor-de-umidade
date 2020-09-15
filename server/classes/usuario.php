@@ -4,38 +4,54 @@
 
 // getIdUsuario() - verifica e retorna se um usuário já está cadastrado no sistema;
 
-class Usuario {
-  public $email = "";
-  public $senha = "";
+  class Usuario {
+    private $login;
+    private $email;
+    private $pdo;
 
-  function getIdUsuario($id){
-    
-    try{
-      $pdo = new PDO(MYSQL, USER, PASSWORD);
+    public function __construct($login, $email){
+      $this->login = $login;
+      $this->email = $email;
+      $this->pdo = new PDO(MYSQL, USER, PASSWORD); # não consegui usar o Conexao.php e fiz assim
+    }
 
-      $res = $pdo->prepare("SELECT * FROM cliente WHERE login = $id;");
-      $res->execute();
+    function getIdCliente($nome,$email){
+      $nome = "%".$nome."%";
+      $r;
 
-      $resultado = $res->fetch(PDO::FETCH_ASSOC);
-      $resultado = json_encode($resultado);
+        $res = $this->pdo->prepare("SELECT login, email 
+                                    FROM cliente 
+                                    WHERE login LIKE :loginCliente 
+                                    AND email = :email;");
+        $res->bindparam(":loginCliente",$nome);
+        $res->bindparam(":email",$email);
+        $res->execute();
+        $resultado = $res->fetch(PDO::FETCH_ASSOC);
+        $resultado = json_encode($resultado);
+        // $resultado = json_decode($resultado);
 
-      echo $resultado;
-    
-    } catch(PDOException $e) {
-    	echo '<strong>Error:</strong> '.$e->getMessage();
-    }  
+        // echo count($resultado);      # retorna 2, cliente(login, email)
 
-  } 
-}
+        // if(count($resultado) = 2){
+        //   $r = true;
+        //   return $r;               nesse trecho tentei fazer uma verificação
+        // }else{                     que ia retornar TRUE se $resultado = 2
+        //   $r = false;              o que quer dizer que a consulta do banco 
+        //   return $r;               retornaria só um registro, sendo este o único no BD.    
+        // }                          mas dá erro kkk
 
-$us = new Usuario();
+        return $resultado;
+    } 
+  }
 
-$us->getIdUsuario('fabio');
+$us = new Usuario('fabio','vitor@gmail.com');
 
-// criaUsuario() - com os dados do formulário, cria um novo registro de usuário;
+$us->getIdCliente('fabio','vitor@gmail.com');
+
+// criaCliente() - com os dados do formulário, cria um novo registro de usuário;
 
 
-// alteraUsuario(emailNovo, nomeNovo, senhaNova, senha) - altera os dados do usuário desejado.
+// alteraCliente(emailNovo, nomeNovo, senhaNova, senha) - altera os dados do usuário desejado.
 
 
   // try{
