@@ -1,8 +1,8 @@
 USE SMUS;
 
-SELECT * FROM cliente;
+SELECT * FROM usuario;
 
-UPDATE cliente
+UPDATE usuario
 SET login = 'Fabio Loterio',
 	email = 'vitorloterio@gmail.com',
 	senha = 'schneider'

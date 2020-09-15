@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS leitura (
     foreign key(idQuadroTerra) references quadroTerra(id)
 );
 
-CREATE TABLE IF NOT EXISTS cliente (
+CREATE TABLE IF NOT EXISTS usuario (
 	id int auto_increment not null,
 	login varchar(40) not null unique,
 	email varchar(45) not null unique,
@@ -47,7 +47,7 @@ INSERT INTO quadroTerra(nome) VALUES
 ("divisa terreno"),
 ("perto estrada geral");
 
-INSERT INTO cliente(login,email,senha) VALUES 
+INSERT INTO usuario(login,email,senha) VALUES 
 ('Henrique', 'Henrique@gmail.com', '123'),
 ('fabio','vitor@gmail.com','ashw'),
 ('nelso','nl@hotmail.com','abc123'); 
