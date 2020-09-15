@@ -25,7 +25,7 @@
         $res->bindparam(":loginUsuario",$nome);
         $res->execute();
         $resultado = $res->fetch(PDO::FETCH_ASSOC);
-        $resultado = json_encode($resultado);kkk
+        $resultado = json_encode($resultado);
         // echo $resultado;
         return $resultado;
     }
