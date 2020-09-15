@@ -1,6 +1,6 @@
 USE SMUS;
 
-SELECT * FROM usuario;
+SELECT * FROM quadroTerra;
 
 UPDATE usuario
 SET login = 'Fabio Loterio',
