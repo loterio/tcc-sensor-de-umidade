@@ -12,29 +12,36 @@
     }
 
     function listaQuadrosTerra(){
+      $comando = "SELECT id, nome, proprietario 
+                  FROM quadroTerra 
+                  WHERE proprietario = :idUsuario;";
+      $arrayStrings = array(":idUsuario");
+      $arrayValores = array($this->idUsuario);
+      $busca = executaComandoSql($comando, $arrayStrings, $arrayValores);
+      echo retornaJsonSelect($busca);
+    }
+
+    function detalhaQuadroTerra(){
       $res = $this->pdo->prepare("SELECT * FROM quadroTerra;");
       $res->execute();
       return retornaJsonSelect($res);
       // echo $resultado;
     }
 
-    function detalhaQuadroTerra($id){
-      $comando = "SELECT id, nome, proprietario 
-                  FROM quadroTerra 
-                  WHERE proprietario = :idUsuario;";
-      $arrayStrings = array(":idUsuario");
-      $arrayValores = array($id);
+    function criaQuadroTerra($proprietario,$nome){
+      $comando = "INSERT INTO quadroTerra(proprietario, nome) 
+                  VALUES (:proprietario,:nome),";
+      $arrayStrings = array(":proprietario",":nome");
+      $arrayValores = array($proprietario,$nome);
       $busca = executaComandoSql($comando, $arrayStrings, $arrayValores);
-      $resultado = retornaJsonSelect($busca);
-
-      echo $resultado;
+      echo retornaJsonSelect($busca);
     }
 
   }
 
-  $q = new QuadroTerra(2);
+  $q = new QuadroTerra(1);
 
-  $q->detalhaQuadroTerra(3);
+  $q->listaQuadrosTerra();
 
  
 
