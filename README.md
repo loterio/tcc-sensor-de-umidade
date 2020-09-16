@@ -64,6 +64,10 @@ São eles:
 Deverão, sob as normas acima, ser montados sempre da seguinte forma:
 
 > **{funcionalidade} - {estado do desenvolvimento} (observação)**
+>   ex:
+>       listaQuadrosTerra - d (retornando dados json)
+>       criaUsuario - ok
+
 
 
 
