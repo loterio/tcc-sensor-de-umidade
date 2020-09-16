@@ -44,6 +44,10 @@ INSERT INTO usuario(login,email,senha) VALUES
 INSERT INTO quadroTerra(proprietario, nome) VALUES 
 (1,"roça de baixo"),
 (1,"divisa terreno"),
+(2,"riozinho"),
+(3,"pinheirinho"),
+(1,"roça de cima"),
+(2,"herança"),
 (1,"perto estrada geral");
 
 INSERT INTO sensor(idQuadroTerra, latitude, longitude) VALUES
