@@ -1,5 +1,5 @@
 <?php
-  require_once('../Conexao.php');
+  require_once('../Funcoes.php');
 
   class QuadroTerra {
 
@@ -12,46 +12,29 @@
     }
 
     function listaQuadrosTerra(){
-
       $res = $this->pdo->prepare("SELECT * FROM quadroTerra;");
       $res->execute();
-      $resultado = $res->fetch(PDO::FETCH_ASSOC);
-
-      
-
-      // while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
-      //   // echo "{$row['id']} - {$row['nome']}<br/>";
-
-      //   json_encode($row);
-
-      //   echo $row;
-      // }
-
-      
-      // $resultado = json_encode($resultado);
-
+      return retornaJsonSelect($res);
       // echo $resultado;
-      // return $resultado;
     }
 
     function detalhaQuadroTerra($id){
+      $comando = "SELECT id, nome, proprietario 
+                  FROM quadroTerra 
+                  WHERE proprietario = :idUsuario;";
+      $arrayStrings = array(":idUsuario");
+      $arrayValores = array($id);
+      $busca = executaComandoSql($comando, $arrayStrings, $arrayValores);
+      $resultado = retornaJsonSelect($busca);
 
-      $res = $this->pdo->prepare("SELECT * FROM :loginUsuario;");
-      $res->bindparam(":loginUsuario",$nome);
-      $res->execute();
-
-      $resultado = $res->fetch(PDO::FETCH_ASSOC);
-      $resultado = json_encode($resultado);
-
-      // echo $resultado;
-      return $resultado;
+      echo $resultado;
     }
 
   }
 
-  $q = new QuadroTerra(3);
+  $q = new QuadroTerra(2);
 
-  $q->listaQuadrosTerra();
+  $q->detalhaQuadroTerra(3);
 
  
 
