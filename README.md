@@ -64,11 +64,11 @@ São eles:
 Deverão, sob as normas acima, ser montados sempre da seguinte forma:
 
 >  **{funcionalidade} - {estado do desenvolvimento} (observação)**  
-  ex:  
+  **ex:**  
       listaQuadrosTerra - d (retornando dados json)  
       criaUsuario - ok  
 
-im out blockquote?
+
 
 
 
