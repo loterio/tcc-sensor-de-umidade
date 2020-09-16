@@ -51,8 +51,11 @@ INSERT INTO sensor(idQuadroTerra, latitude, longitude) VALUES
 (1,80.712,-85.116),
 (2,87.854,-94.432),
 (2,84.270,-89.844),
-(3,90.010,-90.568);
-
+(3,81.854,-94.432),
+(3,81.856,-94.432);
+INSERT INTO sensor(latitude, longitude) VALUES
+(90.010,-90.568),
+(90.011,-90.578);
 
 INSERT INTO leitura(dataHora,idSensor,umidade) VALUES 
 ('2020-09-02 12:05:36',1,31.50),
