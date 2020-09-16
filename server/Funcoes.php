@@ -16,9 +16,8 @@
 
   function retornaJsonSelect($busca) {
     $resultado = array();
-      while($linha = $busca->fetch(PDO::FETCH_ASSOC)){
-        array_push($resultado, $linha); 
-      }
-      $resultado = json_encode($resultado);
-      return $resultado;
+    while($linha = $busca->fetch(PDO::FETCH_ASSOC)){
+      array_push($resultado, $linha); 
+    }
+    return json_encode($resultado);
   }
