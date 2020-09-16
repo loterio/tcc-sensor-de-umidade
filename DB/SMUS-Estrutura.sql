@@ -5,7 +5,7 @@ USE SMUS;
 
 CREATE TABLE IF NOT EXISTS usuario (
 	id int auto_increment not null,
-	login varchar(40) not null unique,
+	nome varchar(40) not null,
 	email varchar(45) not null unique,
     senha varchar(30) not null,
     primary key(id)
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS leitura (
     foreign key(idSensor) references sensor(id)
 );
 
-INSERT INTO usuario(login,email,senha) VALUES 
+INSERT INTO usuario(nome,email,senha) VALUES 
 ('Henrique', 'Henrique@gmail.com', '123'),
 ('fabio','vitor@gmail.com','ashw'),
 ('nelso','nl@hotmail.com','abc123'); 
