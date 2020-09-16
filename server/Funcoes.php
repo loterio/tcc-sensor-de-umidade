@@ -21,3 +21,11 @@
     }
     return json_encode($resultado);
   }
+
+  function retornaArraySelect($busca) {
+    $resultado = array();
+    while($linha = $busca->fetch(PDO::FETCH_ASSOC)){
+      array_push($resultado, $linha); 
+    }
+    return $resultado;
+  }
