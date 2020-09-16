@@ -20,12 +20,12 @@ CREATE TABLE IF NOT EXISTS quadroTerra (
 );
 
 CREATE TABLE IF NOT EXISTS sensor (
-	id int auto_increment not null,
+	idSensor int auto_increment not null,
     idQuadroTerra int,
     latitude float not null,
     longitude float not null,
     foreign key(idQuadroTerra) references quadroTerra(id),
-    primary key(id)
+    primary key(idSensor)
 );
 
 CREATE TABLE IF NOT EXISTS leitura (
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS leitura (
     idSensor int not null,
     umidade float not null,
     primary key(dataHora, idSensor),
-    foreign key(idSensor) references sensor(id)
+    foreign key(idSensor) references sensor(idSensor)
 );
 
 INSERT INTO usuario(nome,email,senha) VALUES 

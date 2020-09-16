@@ -1,6 +1,10 @@
 USE SMUS;
 
-SELECT * FROM quadroTerra;
+SELECT id as "# Quadro", nome, proprietario, idSensor, latitude, longitude 
+FROM quadroTerra
+	INNER JOIN sensor
+WHERE proprietario = 1
+AND id = idQuadroTerra;
 
 UPDATE usuario
 SET login = 'Fabio Loterio',
