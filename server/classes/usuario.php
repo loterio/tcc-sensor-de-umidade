@@ -17,12 +17,14 @@
 
     // getIdUsuario() - verifica e retorna se um usuário já está cadastrado no sistema;
     
-    function getIdUsuario($nome){
+    function getIdUsuario(){
 
         $res = $this->pdo->prepare("SELECT id, login, email 
                                     FROM usuario 
-                                    WHERE login = :loginUsuario;");
-        $res->bindparam(":loginUsuario",$nome);
+                                    WHERE email = :emailUsuario
+                                    AND senha = :senhaUsuario;");
+        $res->bindparam(":emailUsuario",$this->email);
+        $res->bindparam(":senhaUsuario",$this->senha);
         $res->execute();
         $resultado = $res->fetch(PDO::FETCH_ASSOC);
         $resultado = json_encode($resultado);
