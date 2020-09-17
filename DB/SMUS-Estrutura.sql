@@ -22,9 +22,11 @@ CREATE TABLE IF NOT EXISTS quadroTerra (
 CREATE TABLE IF NOT EXISTS sensor (
 	idSensor int auto_increment not null,
     idQuadroTerra int,
+    idProprietario int,
     latitude float not null,
     longitude float not null,
     foreign key(idQuadroTerra) references quadroTerra(id),
+    foreign key(idProprietario) references usuario(id),
     primary key(idSensor)
 );
 
@@ -50,16 +52,16 @@ INSERT INTO quadroTerra(proprietario, nome) VALUES
 (2,"herança"),
 (1,"perto estrada geral");
 
-INSERT INTO sensor(idQuadroTerra, latitude, longitude) VALUES
-(1,78.542,-99.274),
-(1,80.712,-85.116),
-(2,87.854,-94.432),
-(2,84.270,-89.844),
-(3,81.854,-94.432),
-(3,81.856,-94.432);
-INSERT INTO sensor(latitude, longitude) VALUES
-(90.010,-90.568),
-(90.011,-90.578);
+INSERT INTO sensor(idQuadroTerra, idProprietario, latitude, longitude) VALUES
+(1,1,78.542,-99.274),
+(1,2,80.712,-85.116),
+(2,1,87.854,-94.432),
+(2,1,84.270,-89.844),
+(3,1,81.854,-94.432),
+(3,2,81.856,-94.432);
+INSERT INTO sensor(idProprietario, latitude, longitude) VALUES
+(1,90.010,-90.568),
+(2,90.011,-90.578);
 
 INSERT INTO leitura(dataHora,idSensor,umidade) VALUES 
 ('2020-09-02 12:05:36',1,31.50),
