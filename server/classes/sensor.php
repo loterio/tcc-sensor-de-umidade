@@ -25,6 +25,7 @@
       $busca = executaComandoSql($comando, array(), array());
       return retornaJsonSelect($busca);
     }
+    
     function selecionaSensor($idSensor) {
       $comando = "SELECT id, latitude, longitude 
                     FROM sensor 
