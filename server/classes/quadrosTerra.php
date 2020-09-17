@@ -9,7 +9,7 @@
       $this->idUsuario = $idUsuario;
     }
 
-    function listaQuadroTerra(){
+    function listaQuadrosTerra(){
       $comando = "SELECT id, nome, proprietario 
                   FROM quadroTerra 
                   WHERE proprietario = :idUsuario;";
@@ -39,12 +39,7 @@
       echo retornaJsonSelect($busca);
     }
 
-    
-
   }
 
   $q = new QuadroTerra(3);
-
-  $q->listaQuadroTerra();
-
 ?>

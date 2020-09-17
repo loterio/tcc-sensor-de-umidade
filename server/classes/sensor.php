@@ -18,18 +18,19 @@
       return retornaJsonSelect($busca);
     }
     
-    function listaSensoresLivres() {
-      $comando = "SELECT id, latitude, longitude 
-                    FROM sensor 
-                   WHERE idQuadroTerra IS NULL;";
-      $busca = executaComandoSql($comando, array(), array());
+    function listaSensoresLivres($idProprietario) {
+      $comando = "SELECT idSensor, latitude, longitude
+                    FROM sensor
+                   WHERE idQuadroTerra IS NULL
+                     AND idProprietario = :idProprietario;";
+      $busca = executaComandoSql($comando, array(":idProprietario"), array($idProprietario));
       return retornaJsonSelect($busca);
     }
-    
+
     function selecionaSensor($idSensor) {
-      $comando = "SELECT id, latitude, longitude 
-                    FROM sensor 
-                   WHERE id = :idSensor;";
+      $comando = "SELECT idSensor, latitude, longitude
+                    FROM sensor
+                   WHERE idSensor = :idSensor;";
       $busca = executaComandoSql($comando, array(":idSensor"), array($idSensor));
       return retornaJsonSelect($busca);
     }
@@ -37,7 +38,7 @@
     function adicionaSensor($idSensor) {
       $comando = "UPDATE sensor 
                      SET idQuadroTerra = :idQuadroTerra 
-                   WHERE id = :idSensor;";
+                   WHERE idSensor = :idSensor;";
       $arrayStrings = array(":idQuadroTerra", ":idSensor");
       $arrayValores = array($this->idQuadroTerra, $idSensor);
       executaComandoSql($comando, $arrayStrings, $arrayValores);
@@ -46,7 +47,7 @@
     function retiraSensor($idSensor) {
       $comando = "UPDATE sensor 
                      SET idQuadroTerra = NULL 
-                   WHERE id = :idSensor;";
+                   WHERE idSensor = :idSensor;";
       $arrayStrings = array(":idSensor");
       $arrayValores = array($idSensor);
       executaComandoSql($comando, $arrayStrings, $arrayValores);
@@ -65,7 +66,7 @@
       $comando = "UPDATE sensor 
                      SET latitude = :latitude,
                          longitude = :longitude
-                   WHERE id = :idSensor;";
+                   WHERE idSensor = :idSensor;";
       $arrayStrings = array(":idSensor", ":latitude", ":longitude");
       $arrayValores = array($idSensor, $latitude, $longitude);
       executaComandoSql($comando, $arrayStrings, $arrayValores);
@@ -74,10 +75,13 @@
     function excluiSensor($idSensor) {
       $comando = "DELETE 
                     FROM sensor 
-                   WHERE id = :idSensor;";
+                   WHERE idSensor = :idSensor;";
       $arrayStrings = array(":idSensor");
       $arrayValores = array($idSensor);
       executaComandoSql($comando, $arrayStrings, $arrayValores);
     }
   }
+
+  $s = new Sensor(1);
+  echo $s->listaSensoresLivres(1);
 ?>
