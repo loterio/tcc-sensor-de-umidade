@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS usuario (
 	id int auto_increment not null,
 	nome varchar(40) not null,
 	email varchar(45) not null unique,
-    senha varchar(30) not null,
+    senha varchar(255) not null,
     primary key(id)
 );
 
