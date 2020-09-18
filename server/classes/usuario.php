@@ -74,6 +74,4 @@
       return $busca->fetch(PDO::FETCH_ASSOC)["senha"];
     }
   }
-
-  $u = new Usuario;
 ?>
