@@ -1,0 +1,20 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^mobile/list/?$ RestController.php?view=all [nc,qsa]
+RewriteRule ^mobile/show/([0-9]+)/?$ RestController.php?view=single&id=$1 [nc,qsa]
+
+RewriteRule ^entrar/?$ Controle.php?url=entrar/ [nc,qsa]
+RewriteRule ^cadastrar/?$ Controle.php?url=cadastrar/ [nc,qsa]
+RewriteRule ^usuario/?$ Controle.php?url=usuario/ [nc,qsa]
+
+RewriteRule ^quadroTerra/?$ Controle.php?url=quadroTerra/ [nc,qsa]
+RewriteRule ^quadroTerra/([0-9]+)/?$ Controle.php?url=quadroTerra/&id=$1 [nc,qsa]
+
+RewriteRule ^sensor/?$ Controle.php?url=sensor/ [nc,qsa]
+RewriteRule ^sensor/([0-9]+)/?$ Controle.php?url=sensor/&id=$1 [nc,qsa] 
+
+RewriteRule ^leitura/?$ Controle.php?url=leitura/ [nc,qsa]
+RewriteRule ^leitura/([0-9]+)/?$ Controle.php?url=leitura/&sensores=$1 [nc,qsa] 
+
+RewriteRule ^imagem/([0-9]+)/?$ Controle.php?url=leitura/&sensores=$1 [nc,qsa] 

@@ -1,7 +1,6 @@
 <?php
-
-echo "hello world";
-
-$pdo = new PDO(MYSQL, USER, PASSWORD);
-
+  require_once('usuario.php');
+  require_once('quadrosTerra.php');
+  require_once('sensor.php');
+  require_once('leitura.php');
 ?>

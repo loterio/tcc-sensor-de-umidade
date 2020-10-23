@@ -1,3 +1,4 @@
 .vscode
 localhost.session.sql
 local.session.sql
+server/hash.php
