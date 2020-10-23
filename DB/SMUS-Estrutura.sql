@@ -84,4 +84,6 @@ INSERT INTO leitura(idSensor,umidade) VALUES
 (7,25.40),
 (5,62.1);
 
+SELECT * FROM usuario;
+
 
