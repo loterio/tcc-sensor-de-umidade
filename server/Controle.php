@@ -21,7 +21,7 @@ if (isset($_SERVER['HTTP_TOKEN'])) {
 
 if (isset($_SERVER['HTTP_TOKENREDE'])) {
   DEFINE('TOKENREDE', $_SERVER['HTTP_TOKENREDE']);
-  DEFINE('ID_USUARIO', extraiIdUsuarioToken(TOKENREDE));
+  DEFINE('ID_USUARIO', extraiIdUsuarioTokenRede(TOKENREDE));
   DEFINE('VALIDADE_TOKENREDE', validaTokenRede(TOKENREDE, $usuario));
 }
 
@@ -99,7 +99,7 @@ if (isset($_SERVER['HTTP_TOKEN']) and VALIDADE_TOKEN) {
   switch (URL) {
     case 'sensor/':
       $sensor = new Sensor(ID_USUARIO);
-      $leitura = new Leitura(ID_USUARIO); 
+      $leitura = new Leitura(ID_USUARIO);
       $dadosSensor = $_POST['dadosSensor'];
       $dadosSensor = json_decode($dadosSensor);
 
@@ -114,15 +114,21 @@ if (isset($_SERVER['HTTP_TOKEN']) and VALIDADE_TOKEN) {
     case 'leitura/':
       $sensor = new Sensor(ID_USUARIO);
       $leitura = new Leitura(ID_USUARIO);
-      $leituras = json_decode($_POST['leitura']);
-      foreach ($leituras as $valor) {
-        $idSensor = $valor->id;
-        $longitude = $valor->lon;
-        $latitude = $valor->lat;
-        $umidade = $valor->umi;
-        $sensor->atualizaSensor($idSensor, $longitude, $latitude);
-        $leitura->criaLeitura($idSensor, $umidade);
-      }
+      $leituraRecebida = json_decode($_POST['leitura']);
+      $idSensor = $leituraRecebida->id;
+      $longitude = $leituraRecebida->lon;
+      $latitude = $leituraRecebida->lat;
+      $umidade = $leituraRecebida->umi;
+      $sensor->atualizaSensor($idSensor, $longitude, $latitude);
+      $leitura->criaLeitura($idSensor, $umidade);
+      // foreach ($leituras as $valor) {
+      //   $idSensor = $valor->id;
+      //   $longitude = $valor->lon;
+      //   $latitude = $valor->lat;
+      //   $umidade = $valor->umi;
+      //   $sensor->atualizaSensor($idSensor, $longitude, $latitude);
+      //   $leitura->criaLeitura($idSensor, $umidade);
+      // }
       $resposta = json_encode(array("resposta" => "sucesso"));
       break;
   }
@@ -138,9 +144,6 @@ if (isset($_SERVER['HTTP_TOKEN']) and VALIDADE_TOKEN) {
       $email = $_POST['email'];
       $senha = $_POST['senha'];
       $resposta = $usuario->cadastrarUsuario($nome, $email, $senha);
-      break;
-    default:
-      $usuario->sair(ID_USUARIO);
       break;
   }
 }

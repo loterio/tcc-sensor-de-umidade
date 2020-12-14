@@ -55,7 +55,7 @@ function geraToken($id){
   return geraJWT($id, SENHA_TOKEN);
 }
 function geraTokenRede($id){
-  return geraJWT($id, SENHA_TOKEN_REDE);
+  return $id.'.'.time();
 }
 
 function validaToken($token, $usuario)
@@ -78,8 +78,8 @@ function validaToken($token, $usuario)
 
 function validaTokenRede($token, $usuario)
 {
-  $payload = extraiPayload($token);
-  $idUsuario = $payload->sub;
+  $payload = explode('.', $token);
+  $idUsuario = $payload[0];
   $tokenUsuario = $usuario->getTokenRedeId($idUsuario);
   if ($token == $tokenUsuario)
     return true;
@@ -103,4 +103,10 @@ function extraiIdUsuarioToken($token)
     base64_decode($partes[1])
   );
   return $payload->sub;
+}
+
+function extraiIdUsuarioTokenRede($token)
+{
+  $payload = explode('.', $token);
+  return $payload[0];
 }
