@@ -1,4 +1,3 @@
-//12
 #include <EEPROM.h>
 #include <ArduinoJson.h>
 #include <SPI.h>
@@ -21,14 +20,15 @@ const String SUCESSO = "sucesso";
 const String AUTORIZADO = "autorizado";
 const String INSUCESSO = "insucesso";
 const unsigned long DELAY_ESTABILIZAR = 5000;
-const unsigned long DELAY_ENVIAR_NRF = 200;
-const unsigned long DELAY_RECEBER_NRF = 200;
+
+const unsigned long DELAY_ENVIAR_NRF = 100;
+const unsigned long DELAY_RECEBER_NRF = 100;
 const unsigned long TEMPO_TENTANDO_ENVIAR = 30000;
 const unsigned long TEMPO_ESPERANDO_DADO_ROOT = 30000;
 const unsigned long TEMPO_ESPERANDO_AUTORIZACAO = 30000;
 const unsigned long DELAY_SUCESSO = 60000;
-const unsigned long DELAY_MINIMO_INSUCESSO = 7000;
-const unsigned long DELAY_MAXIMO_INSUCESSO = 13000;
+const unsigned long DELAY_MINIMO_INSUCESSO = 15000;
+const unsigned long DELAY_MAXIMO_INSUCESSO = 30000;
 
 int idSensor;
 float umidade;
@@ -44,6 +44,7 @@ String msgLongitude;
 String msgLatitude;
 
 unsigned long DELAY_LOOP = 0;
+
 //================{Funções}================
 //Dados
 void EEPROMWriteInt(int address, int value);
@@ -60,11 +61,6 @@ bool validaDadoJsonRecebido(String dadoJson, int indiceDado);
 //=========================================
 
 void setup() {
-  /*
-  for (int i = 0 ; i < EEPROM.length() ; i++) {
-    EEPROM.write(i, 0);
-  }
-  */
   Serial.begin(9600);
   radio.begin();
   radio.openWritingPipe(addresses[0]);
@@ -73,7 +69,6 @@ void setup() {
   radio.stopListening();
   delay(DELAY_ESTABILIZAR);
   pegaIdSensor();
-  Serial.println("Id Sensor: " + String(idSensor));
 }
 
 void loop() {
@@ -99,6 +94,8 @@ void loop() {
         Serial.println("Os Dados da Minha Leitura NÃO Foram enviados!");
       }
     }
+  } else {
+    Serial.println("Os Dados da Minha Leitura NÃO Foram enviados!");
   }
   Serial.println("======================================");
   delay(DELAY_LOOP);
@@ -106,95 +103,14 @@ void loop() {
 
 void atualizaValores() {
   umidade = 23.75;
-  longitude = -49.93047829461846;
-  latitude = -27.93047829461846;
+  longitude = -49.93047826;
+  latitude = -27.93047829;
 
   msgToken = "{\"t\":\"t[" + TOKEN + "]\"}";
   msgIdSensor = "{\"id\":\"id[" + String(idSensor) + "]\"}";
   msgUmidade = "{\"umi\":\"umi[" + String(umidade, 2) + "]\"}";
-  msgLongitude = "{\"lon\":\"lon[" + String(longitude, 10) + "]\"}";
-  msgLatitude = "{\"lat\":\"lat[" + String(latitude, 10) + "]\"}";
-}
-
-bool enviaDadoNRF(String dado, unsigned long tempoTentandoEnviar) {
-  bool dadoFoiEnviado = false;
-  char dadoChar[32];
-  unsigned long momentoInicial = millis();
-
-  dado.toCharArray(dadoChar, 32);
-
-  while ((millis() - momentoInicial) <= tempoTentandoEnviar) {
-    if (radio.write(&dadoChar, sizeof(dadoChar))) {
-      dadoFoiEnviado = true;
-      momentoInicial -= tempoTentandoEnviar;
-    }
-    delay(DELAY_ENVIAR_NRF);
-  }
-  return dadoFoiEnviado;
-}
-
-String recebeDadoNRF(unsigned long tempoEsperandoDado) {
-  char dadoRecebido[32] = "insucesso";
-  unsigned long momentoInicial = millis();
-
-  radio.startListening();
-  while ((millis() - momentoInicial) <= tempoEsperandoDado) {
-    if (radio.available()) {
-      radio.read(&dadoRecebido, sizeof(dadoRecebido));
-      momentoInicial -= tempoEsperandoDado;
-    }
-    delay(DELAY_RECEBER_NRF);
-  }
-  radio.stopListening();
-  return dadoRecebido;
-}
-
-String enviaDadoJsonNRF(String dado, unsigned long tempoTentandoEnviar) {
-  String respostaAoEnviar = INSUCESSO;
-  unsigned long momentoInicial = millis();
-  while ((millis() - momentoInicial) <= tempoTentandoEnviar) {
-    if (enviaDadoNRF(dado, tempoTentandoEnviar)) {
-      respostaAoEnviar = recebeDadoNRF(tempoTentandoEnviar);
-      if (respostaAoEnviar == SUCESSO) {
-        momentoInicial -= tempoTentandoEnviar;
-      }
-    }
-  }
-  return respostaAoEnviar;
-}
-
-bool recebeDadoJsonNRF(int indiceDado, unsigned long tempoEsperandoDado) {
-  bool dadoJsonFoiRecebido = false;
-  unsigned long momentoInicial = millis();
-  while ((millis() - momentoInicial) <= tempoEsperandoDado) {
-    String dadoJsonRecebido = recebeDadoNRF(tempoEsperandoDado);
-    Serial.println(dadoJsonRecebido);
-    if (dadoJsonRecebido != INSUCESSO) {
-      if (validaDadoJsonRecebido(dadoJsonRecebido, indiceDado)) {
-        if (enviaDadoNRF(SUCESSO, tempoEsperandoDado)) {
-          dadoJsonFoiRecebido = true;
-          momentoInicial -= tempoEsperandoDado;
-        }
-      } else {
-        enviaDadoNRF(INSUCESSO, tempoEsperandoDado);
-      }
-    }
-  }
-  return dadoJsonFoiRecebido;
-}
-
-bool validaDadoJsonRecebido(String dadoJson, int indiceDado) {
-  bool dadoValido = false;
-  DeserializationError err = deserializeJson(doc, dadoJson);
-  if (!err) {
-    if (indiceDado == 5) {
-      idSensor = doc["id"];
-      if (idSensor > 0) {
-        dadoValido = true;
-      }
-    }
-  }
-  return dadoValido;
+  msgLongitude = "{\"lon\":\"lon[" + String(longitude, 8) + "]\"}";
+  msgLatitude = "{\"lat\":\"lat[" + String(latitude, 8) + "]\"}";
 }
 
 void EEPROMWriteInt(int address, int value) {
@@ -231,9 +147,16 @@ void pegaIdSensor() {
         }
         if (dadoFoiEnviado == SUCESSO) {
           Serial.println("Todos os meu Dados de Cadastro Foram Enviados!!!");
-          if (recebeDadoJsonNRF(5, TEMPO_ESPERANDO_DADO_ROOT)){
-            EEPROMWriteInt(0, idSensor);       
-            DELAY_LOOP = DELAY_SUCESSO;  
+          String idCadastroJson = recebeDadoNRF(TEMPO_ESPERANDO_DADO_ROOT);
+          if (idCadastroJson != INSUCESSO) {
+            Serial.println("ID Json Recebido: " + idCadastroJson);
+            DeserializationError err = deserializeJson(doc, idCadastroJson);
+            if (!err) {
+              idSensor = doc["idSensor"];     
+              Serial.println("ID Sensor: " + String(idSensor));
+              EEPROMWriteInt(0, idSensor);
+              DELAY_LOOP = DELAY_SUCESSO;
+            }
             Serial.println("Recebi Um Id!!!");
           } else {
             Serial.println("Nenhum Id Recebido");
@@ -243,4 +166,78 @@ void pegaIdSensor() {
     }
     delay(DELAY_LOOP);
   }
+}
+
+bool enviaDadoNRF(String dado, unsigned long tempoTentandoEnviar) {
+  bool dadoFoiEnviado = false;
+  char dadoChar[32];
+  unsigned long momentoInicial = millis();
+
+  dado.toCharArray(dadoChar, 32);
+
+  while ((millis() - momentoInicial) <= tempoTentandoEnviar) {
+    delay(DELAY_ENVIAR_NRF);
+    if (radio.write(&dadoChar, sizeof(dadoChar))) {
+      dadoFoiEnviado = true;
+      momentoInicial -= tempoTentandoEnviar;
+      //Serial.println("Dado Foi Enviado");
+    } else {
+      //Serial.println("Erro ao Enviar");
+    }
+  }
+  return dadoFoiEnviado;
+}
+
+String recebeDadoNRF(unsigned long tempoEsperandoDado) {
+  char dadoRecebido[32] = "insucesso";
+  unsigned long momentoInicial = millis();
+
+  radio.startListening();
+  while ((millis() - momentoInicial) <= tempoEsperandoDado) {
+    if (radio.available()) {
+      radio.read(&dadoRecebido, sizeof(dadoRecebido));
+      momentoInicial -= tempoEsperandoDado;
+    } else {
+      delay(DELAY_RECEBER_NRF);
+    }
+  }
+  radio.stopListening();
+  return dadoRecebido;
+}
+
+String enviaDadoJsonNRF(String dado, unsigned long tempoTentandoEnviar) {
+  String respostaAoEnviar = INSUCESSO;
+  unsigned long momentoInicial = millis();
+  while ((millis() - momentoInicial) <= tempoTentandoEnviar) {
+    if (enviaDadoNRF(dado, tempoTentandoEnviar)) {
+      respostaAoEnviar = recebeDadoNRF(tempoTentandoEnviar);
+      momentoInicial -= tempoTentandoEnviar;
+    }
+  }
+  return respostaAoEnviar;
+}
+
+bool recebeDadoJsonNRF(int indiceDado, unsigned long tempoEsperandoDado) {
+  bool dadoJsonFoiRecebido = false;
+  unsigned long momentoInicial = millis();
+  while ((millis() - momentoInicial) <= tempoEsperandoDado) {
+    String dadoJsonRecebido = recebeDadoNRF(tempoEsperandoDado);
+    Serial.println(dadoJsonRecebido);
+    if (dadoJsonRecebido != INSUCESSO) {
+      unsigned long tempoEnviarResposta = tempoEsperandoDado - (millis() - momentoInicial);
+      if (validaDadoJsonRecebido(dadoJsonRecebido, indiceDado)) {
+        if (enviaDadoNRF(SUCESSO, tempoEnviarResposta)) {
+          dadoJsonFoiRecebido = true;
+          momentoInicial -= tempoEsperandoDado;
+        }
+      } else {
+        enviaDadoNRF(INSUCESSO, tempoEnviarResposta);
+      }
+    }
+  }
+  return dadoJsonFoiRecebido;
+}
+
+bool validaDadoJsonRecebido(String dadoJson, int indiceDado) {
+  return true;
 }

@@ -1,9 +1,9 @@
+#include <SoftwareSerial.h>
 #include <EEPROM.h>
 #include <ArduinoJson.h>
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
-#include <SoftwareSerial.h>
 
 //=================={Json}=================
 StaticJsonDocument<256> doc;
@@ -22,8 +22,8 @@ const String AUTORIZADO = "autorizado";
 const String INSUCESSO = "insucesso";
 const unsigned long DELAY_ESTABILIZAR = 5000;
 
-const unsigned long DELAY_ENVIAR_NRF = 200;
-const unsigned long DELAY_RECEBER_NRF = 200;
+const unsigned long DELAY_ENVIAR_NRF = 100;
+const unsigned long DELAY_RECEBER_NRF = 100;
 const unsigned long TEMPO_ESPERANDO_DADO_SENSOR = 20000;
 const unsigned long TEMPO_ENVIAR_DADO_SENSOR = 20000;
 const unsigned long TEMPO_ENVIANDO_AUTORIZACAO = 20000;
@@ -35,13 +35,11 @@ const unsigned long TEMPO_ESPERANDO_DADO_GATEWAY = 30000;
 const int TENTATIVAS_ENVIO_GATEWAY = 3;
 
 String tokenSensor;
-int idSensor;
-float umidade;
-float longitude;
-float latitude;
+String idSensor;
+String umidade;
+String longitude;
+String latitude;
 String leituraRecebida;
-int idCadastroSensor;
-
 //=========================================
 
 //================{Funções}================
@@ -55,14 +53,14 @@ String recebeDadoNRF(unsigned long tempoEsperandoDado);
 String enviaDadoJsonNRF(String dado, unsigned long tempoTentandoEnviar);
 bool recebeDadoJsonNRF(int indiceDado, unsigned long tempoEsperandoDado);
 bool validaDadoJsonRecebido(String dadoJson, int indiceDado);
-void enviaDadoLoRa (String dado);
-String recebeDadoLoRa(unsigned long tempoEsperandoDado);
+void enviaDadoLora(String dado);
+String recebeDadoLora(unsigned long tempoEspera);
 bool enviaDadoJsonLoRa (String dado, unsigned long tempoTentandoEnviar, int tentativas);
-bool recebeDadosJsonLoRa(unsigned long tempoEsperandoDado);
+String recebeDadoJsonLora(unsigned long tempoEsperandoDado);
 //=========================================
 
 void setup() {
-  Serial.begin(9600);
+  //Serial.begin(9600);
   lora.begin(9600);
   radio.begin();
   radio.openWritingPipe(addresses[1]);
@@ -76,7 +74,9 @@ void loop() {
   Serial.println("============={Loop - ROOT}============");
   esvaziaVariaveis();
   if (recebeDadoJsonNRF(0, TEMPO_ESPERANDO_DADO_SENSOR)) {
+    Serial.println("Token Recebido!!!");
     if (tokenSensor == TOKEN) {
+      Serial.println("Token Valido");
       if (enviaDadoNRF(AUTORIZADO, TEMPO_ENVIANDO_AUTORIZACAO)) {
         bool dadosJsonRecebidos = false;
         for (int i = 1; i <= 4; i++) {
@@ -88,42 +88,32 @@ void loop() {
         if (dadosJsonRecebidos) {
           atualizaLeituraRecebida();
           Serial.println("Todos os Dados Foram Recebidos Com Exito, ID Sensor: " + String(idSensor));
-          Serial.println("Leitura: "+leituraRecebida);
-          if (idSensor == 0) {            
-            Serial.print("Cadastrar Sensor: ");
-            bool dadosJsonEnviadosGateway = enviaDadoJsonLoRa(leituraRecebida, TEMPO_ENVIAR_DADO_GATEWAY, TENTATIVAS_ENVIO_GATEWAY);
-            if (dadosJsonEnviadosGateway) {
-              if (recebeDadosJsonLoRa(TEMPO_ESPERANDO_DADO_GATEWAY)) {
-                Serial.println("Sucesso, id cadastrado: " + String(idCadastroSensor));
-                if (idCadastroSensor > 0) {
-                  enviaDadoJsonNRF("{\"id\":"+String(idCadastroSensor)+"}", TEMPO_ENVIAR_DADO_SENSOR);
-                }
-              } else {
-                Serial.println("ERRO: Não Foi Recebido Resposta");
-              }
-            }else {
-              Serial.println("ERRO: Não Foi Recebido Resposta");
+          Serial.println("Leitura: " + leituraRecebida);
+          int idSensorInt = idSensor.toInt();
+          Serial.println("Id Sensor: " + String(idSensorInt));
+          bool leituraEnvidaGateway = enviaDadoJsonLora(leituraRecebida, TEMPO_ENVIAR_DADO_GATEWAY, TENTATIVAS_ENVIO_GATEWAY);
+          if (leituraEnvidaGateway) {
+            if (idSensorInt == 0) {
+              String idCadastroSensor = recebeDadoJsonLora(TEMPO_ESPERANDO_DADO_GATEWAY);
+              Serial.println("Id Sensor cadastro: " + idCadastroSensor);
+              enviaDadoNRF(idCadastroSensor, TEMPO_ENVIAR_DADO_SENSOR);
             }
           } else {
-            Serial.print("Salvar Leitura: ");
-            bool leituraSalva = enviaDadoJsonLoRa(leituraRecebida, TEMPO_ENVIAR_DADO_GATEWAY, TENTATIVAS_ENVIO_GATEWAY);
-            if(leituraSalva) {
-              Serial.println("Leitura Salva Com Sucesso");  
-            } else {
-              Serial.println("ERRO: Leitura não foi Enviada ao GATEWAY");  
-            }
+            Serial.println("FALHA ao Enviar Leitura ao Gateway");
           }
-        } else {
-          Serial.println("Os Dados Não Foram Recebidos Com Exito");
         }
       }
     }
+    Serial.println("======================================");
   }
-  Serial.println("======================================");
 }
-
-void atualizaLeituraRecebida() {
-  leituraRecebida = "{\"t\":\"" + TOKEN + "\",\"id\":" + String(idSensor) + ",\"umi\":" + String(umidade, 2) + ",\"lon\":" + String(longitude, 14) + ",\"lat\":" + String(latitude, 14) + "}";
+void esvaziaVariaveis() {
+  tokenSensor = "";
+  idSensor = "";
+  umidade = "";
+  longitude = "";
+  latitude = "";
+  leituraRecebida = "";
 }
 
 bool enviaDadoNRF(String dado, unsigned long tempoTentandoEnviar) {
@@ -134,11 +124,13 @@ bool enviaDadoNRF(String dado, unsigned long tempoTentandoEnviar) {
   dado.toCharArray(dadoChar, 32);
 
   while ((millis() - momentoInicial) <= tempoTentandoEnviar) {
+    delay(DELAY_ENVIAR_NRF);
     if (radio.write(&dadoChar, sizeof(dadoChar))) {
       dadoFoiEnviado = true;
       momentoInicial -= tempoTentandoEnviar;
+    } else {
+      Serial.println("Erro ao Enviar");
     }
-    delay(DELAY_ENVIAR_NRF);
   }
   return dadoFoiEnviado;
 }
@@ -146,16 +138,17 @@ bool enviaDadoNRF(String dado, unsigned long tempoTentandoEnviar) {
 String recebeDadoNRF(unsigned long tempoEsperandoDado) {
   char dadoRecebido[32] = "insucesso";
   unsigned long momentoInicial = millis();
+
   radio.startListening();
   while ((millis() - momentoInicial) <= tempoEsperandoDado) {
     if (radio.available()) {
       radio.read(&dadoRecebido, sizeof(dadoRecebido));
       momentoInicial -= tempoEsperandoDado;
+    } else {
+      delay(DELAY_RECEBER_NRF);
     }
-    delay(DELAY_RECEBER_NRF);
   }
   radio.stopListening();
-  Serial.println("Dado Recebido do Sensor: " + String(dadoRecebido));
   return dadoRecebido;
 }
 
@@ -165,9 +158,7 @@ String enviaDadoJsonNRF(String dado, unsigned long tempoTentandoEnviar) {
   while ((millis() - momentoInicial) <= tempoTentandoEnviar) {
     if (enviaDadoNRF(dado, tempoTentandoEnviar)) {
       respostaAoEnviar = recebeDadoNRF(tempoTentandoEnviar);
-      if (respostaAoEnviar == SUCESSO) {
-        momentoInicial -= tempoTentandoEnviar;
-      }
+      momentoInicial -= tempoTentandoEnviar;
     }
   }
   return respostaAoEnviar;
@@ -178,14 +169,15 @@ bool recebeDadoJsonNRF(int indiceDado, unsigned long tempoEsperandoDado) {
   unsigned long momentoInicial = millis();
   while ((millis() - momentoInicial) <= tempoEsperandoDado) {
     String dadoJsonRecebido = recebeDadoNRF(tempoEsperandoDado);
+    Serial.println("Dado Json Recebido: " + dadoJsonRecebido);
     if (dadoJsonRecebido != INSUCESSO) {
+      unsigned long tempoEnviarResposta = tempoEsperandoDado / 5;
       if (validaDadoJsonRecebido(dadoJsonRecebido, indiceDado)) {
-        if (enviaDadoNRF(SUCESSO, tempoEsperandoDado)) {
-          dadoJsonFoiRecebido = true;
-          momentoInicial -= tempoEsperandoDado;
-        }
+        enviaDadoNRF(SUCESSO, tempoEnviarResposta);
+        dadoJsonFoiRecebido = true;
+        momentoInicial -= tempoEsperandoDado;
       } else {
-        enviaDadoNRF(INSUCESSO, tempoEsperandoDado);
+        enviaDadoNRF(INSUCESSO, tempoEnviarResposta);
       }
     }
   }
@@ -196,35 +188,58 @@ bool validaDadoJsonRecebido(String dadoJson, int indiceDado) {
   bool dadoValido = false;
   DeserializationError err = deserializeJson(doc, dadoJson);
   if (!err) {
+    Serial.println("Dado Json Válido");
     if (indiceDado == 0) {
       const char* tokenSensorChar = doc["t"];
       tokenSensor = tokenSensorChar;
-      if (tokenSensor != "") {
+      int dadoEsperado = tokenSensor.indexOf("t");
+      if (dadoEsperado == 0) {
+        tokenSensor = extraiDadoNRF(tokenSensor);
+        Serial.println("Mensagem limpa: " + tokenSensor);
         dadoValido = true;
       }
-    } else if (indiceDado == 1) {
-      idSensor = doc["id"];
-      if (idSensor >= 0) {
+    }
+
+    if (indiceDado == 1) {
+      const char* idSensorChar = doc["id"];
+      idSensor = idSensorChar;
+      int dadoEsperado = idSensor.indexOf("id");
+      if (dadoEsperado == 0) {
+        idSensor = extraiDadoNRF(idSensor);
+        Serial.println("Mensagem limpa: " + idSensor);
         dadoValido = true;
       }
-    } else if (indiceDado == 2) {
-      umidade = doc["umi"];
-      if (umidade >= 0) {
+    }
+
+    if (indiceDado == 2) {
+      const char* umidadeChar = doc["umi"];
+      umidade = umidadeChar;
+      int dadoEsperado = umidade.indexOf("umi");
+      if (dadoEsperado == 0) {
+        umidade = extraiDadoNRF(umidade);
+        Serial.println("Mensagem limpa: " + umidade);
         dadoValido = true;
       }
-    } else if (indiceDado == 3) {
-      longitude = doc["lon"];
-      if (longitude != 0) {
+    }
+
+    if (indiceDado == 3) {
+      const char* longitudeChar = doc["lon"];
+      longitude = longitudeChar;
+      int dadoEsperado = longitude.indexOf("lon");
+      if (dadoEsperado == 0) {
+        longitude = extraiDadoNRF(longitude);
+        Serial.println("Mensagem limpa: " + longitude);
         dadoValido = true;
       }
-    } else if (indiceDado == 4) {
-      latitude = doc["lat"];
-      if (latitude != 0) {
-        dadoValido = true;
-      }
-    } else if (indiceDado == 5) {
-      idCadastroSensor = doc["id"];
-      if (idCadastroSensor > 0) {
+    }
+
+    if (indiceDado == 4) {
+      const char* latitudeChar = doc["lat"];
+      latitude = latitudeChar;
+      int dadoEsperado = latitude.indexOf("lat");
+      if (dadoEsperado == 0) {
+        latitude = extraiDadoNRF(latitude);
+        Serial.println("Mensagem limpa: " + latitude);
         dadoValido = true;
       }
     }
@@ -232,46 +247,81 @@ bool validaDadoJsonRecebido(String dadoJson, int indiceDado) {
   return dadoValido;
 }
 
-void enviaDadoLoRa (String dado) {
-  dado = "[" + dado + "]";
+String extraiDadoNRF(String dado) {
+  String dadoExtraido = "";
+  int inicioMensagem = dado.indexOf("[");
+  int fimMensagem = dado.indexOf("]");
+  inicioMensagem++;
+  fimMensagem--;
+  for (int i = inicioMensagem; i <= fimMensagem; i++) {
+    dadoExtraido += dado[i];
+  }
+  return dadoExtraido;
+}
+
+void atualizaLeituraRecebida() {
+  leituraRecebida = "{\"t\":\"" + TOKEN + "\",\"id\":" + idSensor + ",\"umi\":" + umidade + ",\"lon\":" + longitude + ",\"lat\":" + latitude + "}";
+}
+
+void enviaDadoLora (String dado) {
+  dado = "(" + dado + ")";
   lora.print(dado);
 }
 
-String recebeDadoLoRa(unsigned long tempoEsperandoDado) {
+String recebeDadoLora(unsigned long tempoEsperandoDado) {
   String dadoRecebido = INSUCESSO;
   unsigned long momentoInicial = millis();
   while ((millis() - momentoInicial) <= tempoEsperandoDado) {
     if (lora.available() > 1) {
       dadoRecebido = lora.readString();
-      String stringAux = "";
-      int inicioMensagem = dadoRecebido.indexOf("[");
-      int fimMensagem = dadoRecebido.indexOf("]");
-      if (inicioMensagem != -1 and fimMensagem != -1) {
-        for (int i = inicioMensagem; i <= fimMensagem ; i++) {
-          stringAux += dadoRecebido[i];
-        }
-        dadoRecebido = stringAux;
-        inicioMensagem = dadoRecebido.indexOf("[");
-        dadoRecebido.remove(inicioMensagem, 1);
-        fimMensagem = dadoRecebido.indexOf("]");
-        dadoRecebido.remove(fimMensagem, 1);
-        momentoInicial -= tempoEsperandoDado;
-      } else {
-        dadoRecebido = INSUCESSO;
+      String dadoExtraido = "";
+      int inicioMensagem = dadoRecebido.indexOf("(");
+      int fimMensagem = dadoRecebido.indexOf(")");
+      inicioMensagem++;
+      fimMensagem--;
+      for (int i = inicioMensagem; i <= fimMensagem; i++) {
+        dadoExtraido += dadoRecebido[i];
       }
+      dadoRecebido = dadoExtraido;
+      momentoInicial -= tempoEsperandoDado;
     }
     delay(20);
   }
   return dadoRecebido;
 }
 
-bool enviaDadoJsonLoRa (String dado, unsigned long tempoTentandoEnviar, int tentativas) {
+String recebeDadoJsonLora(unsigned long tempoEsperandoDado) {
+  String dadoRecebido = INSUCESSO;
+  unsigned long momentoInicial = millis();
+  while ((millis() - momentoInicial) <= tempoEsperandoDado) {
+    if (lora.available() > 1) {
+      dadoRecebido = lora.readString();
+      Serial.println("Dado Recebido: " + dadoRecebido);
+      String dadoExtraido = "";
+      int inicioMensagem = dadoRecebido.indexOf("(");
+      int fimMensagem = dadoRecebido.indexOf(")");
+      inicioMensagem++;
+      fimMensagem--;
+      for (int i = inicioMensagem; i <= fimMensagem; i++) {
+        dadoExtraido += dadoRecebido[i];
+      }
+      dadoRecebido = dadoExtraido;
+      momentoInicial -= tempoEsperandoDado;
+      enviaDadoLora(SUCESSO);
+    }
+    delay(20);
+  }
+  return dadoRecebido;
+}
+
+bool enviaDadoJsonLora (String dado, unsigned long tempoTentandoEnviar, int tentativas) {
   bool dadoJsonFoiEnviado = false;
   unsigned long tempoPorTentativa = tempoTentandoEnviar / tentativas;
   unsigned long momentoInicial = millis();
   while ((millis() - momentoInicial) <= tempoTentandoEnviar) {
-    enviaDadoLoRa(dado);
-    String dadoFoiEnviado = recebeDadoLoRa(tempoPorTentativa);
+    enviaDadoLora(dado);
+    String dadoFoiEnviado = recebeDadoLora(tempoPorTentativa);
+    Serial.println("Status de Envio Dado Json: " + dadoFoiEnviado);
     if (dadoFoiEnviado == SUCESSO) {
       dadoJsonFoiEnviado = true;
       momentoInicial -= tempoTentandoEnviar;
@@ -280,33 +330,4 @@ bool enviaDadoJsonLoRa (String dado, unsigned long tempoTentandoEnviar, int tent
     }
   }
   return dadoJsonFoiEnviado;
-}
-
-bool recebeDadosJsonLoRa(unsigned long tempoEsperandoDado) {
-  bool dadosJsonValidos = false;
-  unsigned long momentoInicial = millis();
-  while ((millis() - momentoInicial) <= tempoEsperandoDado) {
-    String dadoJsonRecebido = recebeDadoLoRa(tempoEsperandoDado);
-    if (dadoJsonRecebido != INSUCESSO) {
-      dadosJsonValidos = validaDadoJsonRecebido(dadoJsonRecebido, 5);
-      //dadosJsonValidos = validaDadoJsonRecebidoLoRa(dadoJsonRecebido);
-      if (dadosJsonValidos) {
-        enviaDadoLoRa(SUCESSO);
-        momentoInicial -= tempoEsperandoDado;
-      } else {
-        enviaDadoLoRa(INSUCESSO);
-      }
-    }
-  }
-  return dadosJsonValidos;
-}
-
-void esvaziaVariaveis () {
-  tokenSensor = "";
-  idSensor = -1;
-  umidade = -1;
-  longitude = 0;
-  latitude = 0;
-  leituraRecebida = "";
-  idCadastroSensor = 0;
 }

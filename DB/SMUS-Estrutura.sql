@@ -49,11 +49,11 @@ CREATE TABLE leitura (
 );
 
 INSERT INTO usuario(nome, email, senha, token, tokenRede) VALUES 
-/*123*/('Henrique', 'Henrique@gmail.com', '$2y$10$MaRu4gj07b0dzNtljJnJaeMGgfB7CZ1ESPl2DgzQ/kdY5Hy4obwSC', 'eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJzdWIiOiAiMSIsICJpYXQiOiAxNjAzMTU0NzE1fQ.bFQgTqHwWYxqUVaNsPfQwvcIKL4xrm2ywHDdu7HVNmg', 'eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJzdWIiOiAiMSIsICJpYXQiOiAxNjAzMTM0MTIxfQ.iW0ZSAoywXdmGGJLciVCBNoCUn9esgZxpWeJSY2h8F4'),#123
-/*abc*/('fabio','vitor@gmail.com','$2y$10$Hhs7O8gsP4oKn89qewvKzuhzv5XeDT2GNLcph4yY1RUatQTrtT1Le', null, 'eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJzdWIiOiAiMSIsICJpYXQiOiAxNjAzMTM0MTIxfQ.iW0ZSAoywXdmGGJLciVCBNoCUn9esgZxpWeJSY2h8F4'),#abc
-/*adm*/('nelso','nl@hotmail.com','$2y$10$Qpc.yFh7c5xOSzY2ETTkzekg.gVNlMHfrxM/JnFm8xiEpW08xRNmy', null, 'eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJzdWIiOiAiMSIsICJpYXQiOiAxNjAzMTM0MTIxfQ.iW0ZSAoywXdmGGJLciVCBNoCUn9esgZxpWeJSY2h8F4');#adm
+/*123*/('Henrique', 'Henrique@gmail.com', '$2y$10$MaRu4gj07b0dzNtljJnJaeMGgfB7CZ1ESPl2DgzQ/kdY5Hy4obwSC', 'eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJzdWIiOiAiMSIsICJpYXQiOiAxNjAzMTU0NzE1fQ.bFQgTqHwWYxqUVaNsPfQwvcIKL4xrm2ywHDdu7HVNmg', '1.1603836354'),#123
+/*abc*/('fabio','vitor@gmail.com','$2y$10$Hhs7O8gsP4oKn89qewvKzuhzv5XeDT2GNLcph4yY1RUatQTrtT1Le', null, '2.1603836354'),#abc
+/*adm*/('nelso','nl@hotmail.com','$2y$10$Qpc.yFh7c5xOSzY2ETTkzekg.gVNlMHfrxM/JnFm8xiEpW08xRNmy', null, '3.1603836354');#adm
 
-INSERT INTO quadroTerra(proprietario, nome, imagem, umidadeIdeal) VALUES 
+/*INSERT INTO quadroTerra(proprietario, nome, imagem, umidadeIdeal) VALUES 
 (1,"roça de baixo", '../DB/imgQuadroTerra/rocaDeBaixo.jpg', 30.5),
 (1,"divisa terreno", '../DB/imgQuadroTerra/divisaTerreno.jpg', 30.5),
 (2,"riozinho", '../DB/imgQuadroTerra/riozinho.jpg', 30.5),
@@ -83,7 +83,7 @@ INSERT INTO leitura(idSensor,umidade) VALUES
 (1,42.80),
 (7,25.40),
 (5,62.1);
-
-SELECT * FROM usuario;
+*/
+SELECT * FROM leitura;
 
 
