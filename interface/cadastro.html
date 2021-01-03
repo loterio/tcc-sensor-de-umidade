@@ -5,16 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/paginaInicial.css">
+    <link rel="stylesheet" href="assets/css/cadastro.css">
     <title>início</title>
 </head>
 <body>
     <header>
         <span class="titulo">SMUS</span>   
-        <ul class="menu">
-            <li><a class="sign-in" href="">Login</a></li>
-            <li><a class="sign-up" href="cadastro.html">Cadastre-se</a></li>
-        </ul>
     </header>
     <main>
         <div class="arte">
@@ -25,6 +21,10 @@
         <div class="formulario">
             <form action="" method="post" autocomplete="off">
                 <div class="input-unidade">
+                  <label for="nome">Nome</label>
+                  <input type="text" name="nome" id="nome">       
+                </div>
+                <div class="input-unidade">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email">       
                 </div>
@@ -32,11 +32,11 @@
                     <label for="senha">Senha</label>
                     <input type="password" name="pw" id="senha">
                 </div>
-                <input type="submit" value="Login">
+                <input type="submit" value="Salvar">
             </form>
-            <div class="sign-up">
-                <span>Ainda não possui cadastro? <br>
-                    <a href="cadastro.html">Cadastre-se já!</a>
+            <div class="sign-in">
+                <span>Já está cadastrado? <br>
+                    <a href="index.html">Logue já!</a>
                 </span>
             </div>
         </div>
