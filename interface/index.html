@@ -5,38 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/paginaInicial.css">
     <title>início</title>
 </head>
 <body>
-
     <header>
-        <span class="title">SMUS</span>   
+        <span class="titulo">SMUS</span>   
         <ul class="menu">
             <li><a class="sign-in" href="">Login</a></li>
             <li><a class="sign-up" href="">Cadastre-se</a></li>
         </ul>
     </header>
-
-    <main class="container">
-
-        <div class="image">
-            <img src="assets/img/agric.png" alt="agriculture symbol" height="300">
+    <main>
+        <div class="arte">
+            <img id="logo" src="assets/img/logo.svg">
+            <img id="poligono-design-1" src="assets/img/poligono-design-1.svg">
+            <img id="poligono-design-2" src="assets/img/poligono-design-2.svg">
         </div>
-        <form action="" method="post">
-
-            <div class="input-unit">
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome">       
+        <div class="formulario">
+            <form action="" method="post" autocomplete="off">
+                <div class="input-unidade">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">       
+                </div>
+                <div class="input-unidade">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="pw" id="senha">
+                </div>
+                <input type="submit" value="Login">
+            </form>
+            <div class="sign-up">
+                <span>Ainda não possui cadastro? <br>
+                    <a href="">Cadastre-se já!</a>
+                </span>
             </div>
-
-            <div class="input-unit">
-                <label for="pw">Senha</label>
-                <input type="text" name="pw" id="pw">
-            </div>
-
-            <input type="submit" value="Login">
-
-        </form>
+        </div>
     </main>
 
 </body>

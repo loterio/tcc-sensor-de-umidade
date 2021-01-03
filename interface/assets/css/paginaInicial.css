@@ -1,0 +1,147 @@
+header {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .titulo {
+  margin-left: 5vw;
+  font-size: 3.6rem;
+  font-weight: bold;
+}
+
+header .menu {
+  width: 25rem;
+  margin-right: 5vw;
+  list-style-type: none;
+  font-size: 2.2rem;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu li .sign-up {
+  color: #0FCE50;
+}
+
+main {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+}
+
+main .arte {
+  width: 50vw;
+  height: 90vh;
+}
+
+.arte img {
+  position: fixed;
+  z-index: -1;
+}
+
+main .formulario {
+  width: 50vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.formulario form {
+  width: 45rem;
+  height: 40rem;
+  padding-top: 5rem;
+  margin-top: 5vh;
+  margin-right: 5vw;
+  background-color: #EAEAEA;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulario .input-unidade {
+  width: 40rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario .input-unidade label{
+  font-size: 2.2rem;
+  color: #424242;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}  
+
+.formulario .input-unidade input{
+  height: 5rem;
+  font-size: 2.2rem;
+  color: #424242;
+  border: 0.2rem solid #D9D9D9;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.formulario input:focus{
+  outline: none;
+}
+
+.formulario input[type="submit"] {
+  width: 22.5rem;
+  height: 5.5rem;
+  margin-top: 5rem;
+  font-size: 2.2rem;
+  font-weight: bolder;
+  border-radius: 1rem;
+  border: none;
+  color: #FFFFFF;
+  background-color: #0FCE50;
+  cursor: pointer;
+}
+
+div[class="sign-up"] {
+  width: 45rem;
+  height: 8rem;
+  margin-top: 5vh;
+  margin-right: 5vw;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #424242;
+  background-color: #EAEAEA;
+  border-radius: 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div[class="sign-up"] a {
+  text-decoration: none;
+  color: #0FCE50;
+}
+
+#logo {
+  width: 30vw;
+  top: 25vh;
+  left: 15vw;
+}
+
+#poligono-design-1 {
+  left: 0;
+  bottom: 0;
+}
+
+#poligono-design-2 {
+  left: 0;
+  bottom: 0;
+}
