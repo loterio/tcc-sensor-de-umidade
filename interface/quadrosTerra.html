@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/quadrosTerra.css">
+	
+	<!-- mapbox -->
+	<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+	<script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
+	<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css"type="text/css" />
+
+	<title>Quadro de Terra</title>
+</head>
+
+<body>
+	<header>
+		<span class="titulo">SMUS</span>
+		<ul>
+			<button name="ajuda">Ajuda</button>
+			<button name="perfil" onclick="iniciaModal('dados-usuario')">Perfil</button>
+		</ul>
+	</header>
+	<main>
+		<div class="controle">
+			<span>Quadros de Terra</span>
+			<input type="text" name="busca" placeholder="Buscar" autocomplete="off">
+			<button id="novo-quadro-terra-button" name="novoQuadroTerra" onclick="iniciaModal('novo-quadro-terra')">
+				+ Novo
+			</button>
+		</div>
+		<div class="quadrosTerra">
+			<div class="quadroTerra">
+				<span class="nome">Araucária</span>
+				<img src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
+			</div>
+		</div>
+	</main>
+	<div class="background-modal">
+		<div id="novo-quadro-terra" class="modal">
+			<img src="assets/img/fechar.svg" alt="" class="fechar icone">
+			<span class="nome-modal">Novo Quadro de Terra</span>
+			<form action="" method="post" autocomplete="off">
+				<div class="nome-quadro-bloco">
+					<label for="nome">Nome</label>
+					<input type="text" name="nome" id="nome" placeholder="Insira o nome">
+				</div>
+				<div class="mapa-bloco">
+					<label>Defina os limites do Terreno</label>
+					<div class="mapa" id="map"></div>
+					<input type="hidden" name="coordenadas-terreno">
+				</div>
+				<div class="input-pequeno">
+					<div class="imagem-quadro-bloco">
+						<label for="imagem-quadro">
+							<img src="assets/img/imgIcone.svg" alt="">
+							<span>Imagem do Terreno</span>
+						</label>
+						<input type="file" id="imagem-quadro" name="imagem-quadro">
+					</div>
+					<div class="umidade-ideal-bloco">
+						<label for="umidade-ideal">Faixa de umidade ideal: <span id="valor-umidade-ideal">50</span>%</label>
+						<input type="range" name="umidade-ideal" id="umidade-ideal" min="0" max="100">
+					</div>
+				</div>
+				<input type="submit" value="Criar">
+			</form>
+		</div>
+		<div id="dados-usuario" class="modal">
+			<img src="assets/img/fechar.svg" alt="" class="fechar icone">
+			<span class="nome-modal">Dados Usuário</span>
+			<form action="" method="post" autocomplete="off">
+				<div class="input-unidade">
+					<label for="nome">Nome</label>
+					<input type="text" name="nome" id="nome">
+				</div>
+				<div class="input-unidade">
+					<label for="email">Email</label>
+					<input type="email" name="email" id="email">
+				</div>
+				<div class="input-unidade">
+					<label for="senha">Senha</label>
+					<input type="password" name="pw" id="senha">
+				</div>
+				<input type="submit" value="Salvar">
+			</form>
+		</div>
+	</div>
+	<script src="assets/js-interacao/quadrosTerra.js"></script>
+</body>
+
+</html>

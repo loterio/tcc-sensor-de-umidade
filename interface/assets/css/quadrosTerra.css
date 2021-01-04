@@ -1,0 +1,351 @@
+header {
+  width: 100vw;
+  height: 10vh;
+  background-color: #0FCE50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+header .titulo {
+  font-size: 3.6rem;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+header button {
+  font-size: 2.2rem;
+  color: #FFFFFF;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+main {
+  width: 100vw;
+  height: 90vh;
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.controle {
+  width: 80vw;
+  height: 7rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  border-radius: 0.5rem;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.controle span {
+  font-size: 3.2rem;
+  font-weight: 600;
+  color: #424242;
+}
+
+.controle input {
+  width: 35vw;
+  height: 4rem;
+  padding-left: 1rem;
+  font-size: 1.6rem;
+  color: #424242;
+  border: 0.2rem solid #d1d1d1;
+  border-radius: 0.5rem;
+  background-color: #FAFAFA;
+  outline: none;
+}
+
+.controle input::placeholder {
+  color: #424242;
+}
+
+.controle button {
+  width: 15rem;
+  height: 4rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color: #0FCE50;
+  border: none;
+  border-radius: 0.5rem;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.quadrosTerra {
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.quadroTerra {
+  width: 25vw;
+  height: 25rem;
+  margin-bottom: 3rem;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.quadrosTerra .nome {
+  width: 20vw;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.quadrosTerra img {
+  width: 20vw;
+  height: 18rem;
+}
+
+.background-modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000047;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  display: none;
+}
+
+.modal {
+  width: 60vw;
+  border-radius: 0.5rem;
+  background-color: #EAEAEA;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}
+
+.modal form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fechar {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+}
+
+.nome-modal {
+  margin-bottom: 1rem;
+  margin-bottom: 1rem;
+  font-size: 3.4rem;
+  font-weight: bold;
+}
+
+#novo-quadro-terra {
+  padding: 1rem 0 1rem 0;
+}
+
+#novo-quadro-terra .nome-quadro-bloco {
+  width: 45vw;
+  height: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: 0.2rem solid #C9C9C9;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+#novo-quadro-terra .nome-quadro-bloco label {
+  width: 10rem;
+  height: 100%;
+  border-radius: 0.5rem 0 0 0.5rem;
+  border-right: 0.3rem solid #C9C9C9;
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#novo-quadro-terra .nome-quadro-bloco input {
+  width: 100%;
+  height: 100%;
+  padding-left: 2rem;
+  color: #161616;
+  border: none;
+  border-radius: 0 0.5rem 0.5rem 0;
+  outline: none;
+  font-size: 2.2rem;
+}
+
+#novo-quadro-terra .nome-quadro-bloco input::placeholder {
+  color: #424242;
+}
+
+#novo-quadro-terra .mapa-bloco {
+  width: 45vw;
+  height: 30rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#novo-quadro-terra .mapa-bloco label {
+  width: 40vw;
+  font-size: 2rem;
+  padding: 0.5rem 0 0.5rem 0;
+}
+
+#map {
+  width: 40vw;
+  height: 25rem;
+  z-index: 20;
+}
+
+.input-pequeno {
+  width: 45vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imagem-quadro-bloco label {
+  width: 22vw;
+  height: 7rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 2.5vw 0 2.5vw;
+  cursor: pointer;
+}
+
+.imagem-quadro-bloco span {
+  margin-left: 3rem;
+  font-size: 1.6rem;
+}
+.imagem-quadro-bloco input {
+  display: none;
+}
+
+.umidade-ideal-bloco {
+  width: 22vw;
+  height: 7rem;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  padding: 0 2.5vw 0 2.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.umidade-ideal-bloco label{
+  margin-bottom: 1rem;  
+}
+
+#valor-umidade-ideal {
+  color: #0077ff;
+}
+
+.umidade-ideal-bloco input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  height: 1rem;
+  border-radius: 1rem;
+  background-color:#0077ff;
+  outline: none;
+}
+
+.umidade-ideal-bloco input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background-color: white;
+  border: 0.2rem solid #0077ff;
+}
+
+.umidade-ideal-bloco input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: white;
+  border: 0.2rem solid #0077ff;
+}
+
+.modal input[type="submit"] {
+  width: 22.5rem;
+  height: 5.5rem;
+  margin: 2rem 0 1rem 0;
+  font-size: 2.2rem;
+  font-weight: bolder;
+  border-radius: 1rem;
+  border: none;
+  color: #FFFFFF;
+  background-color: #0FCE50;
+  outline: none;
+  cursor: pointer;
+}
+
+#dados-usuario {
+  padding: 1rem 0 1rem 0;
+}
+
+#dados-usuario .input-unidade {
+  width: 45vw;
+  height: 9rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#dados-usuario .input-unidade label{
+  font-size: 2.2rem;
+  color: #424242;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}  
+
+#dados-usuario .input-unidade input{
+  height: 5rem;
+  font-size: 2.2rem;
+  color: #424242;
+  border: 0.2rem solid #D9D9D9;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.mostrar {
+  display: flex;
+}

@@ -9,3 +9,8 @@ html {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 }
+
+.icone {
+    width: 2rem;
+    height: 2rem;
+}

@@ -58,14 +58,14 @@ main .formulario {
   flex-direction: column;
 }
 
-.formulario .input-unidade label{
+.formulario .input-unidade label {
   font-size: 2.2rem;
   color: #424242;
   font-weight: bold;
   margin-bottom: 0.2rem;
-}  
+}
 
-.formulario .input-unidade input{
+.formulario .input-unidade input {
   height: 5rem;
   font-size: 2.2rem;
   color: #424242;
@@ -74,7 +74,7 @@ main .formulario {
   padding: 1rem;
 }
 
-.formulario input:focus{
+.formulario input:focus {
   outline: none;
 }
 
@@ -88,6 +88,7 @@ main .formulario {
   border: none;
   color: #FFFFFF;
   background-color: #0FCE50;
+  outline: none;
   cursor: pointer;
 }
 
