@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
-html {
-    font-size: 62.5%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 
 * { 
     padding: 0;
@@ -10,6 +6,14 @@ html {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 }
+
+html {
+    font-size: 62.5%;
+}
+
+/* body {
+    width: 100%;
+} */
 
 .icone {
     width: 2rem;
@@ -63,7 +67,7 @@ header {
     color: #0FCE50;
 }
 
-/* Body / Conteúdo da P. */
+/* Body / Conteúdo da P. 
 
 main {
     display: flex;
@@ -72,8 +76,8 @@ main {
 .image {
     width: 50%;
 }
-
-/* Formulário */
+*/
+/* Formulário 
 
 form {
     background-color: #eaeaea;
@@ -109,9 +113,9 @@ input[type=submit] {
     font-size: 2.4rem;
     font-weight: 600;
 }
+*/
 
-
-/* Container */
+/* Container
 
 .container {
     padding: 4vh 14vw 6vh 14vh;
@@ -119,4 +123,5 @@ input[type=submit] {
 .container h1 {
     font-size: 4rem;
     background-color: white;
-} */
+} 
+ */

@@ -1,13 +1,13 @@
 header {
-  width: 100vw;
+  width: 100%;
   height: 10vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1rem 10rem;
 }
 
 header .titulo {
-  margin-left: 5vw;
   font-size: 4rem;
   font-weight: 700;
   letter-spacing: .4rem;
@@ -15,10 +15,9 @@ header .titulo {
 
 header .menu {
   width: 25rem;
-  margin-right: 5vw;
   list-style-type: none;
   font-size: 2rem;
-  font-weight: bolder;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,8 +27,8 @@ header .menu {
   text-decoration: none;
   color: black;
   transition: 0.24s;
-
-  padding: .4rem 1rem;
+  padding: .6rem 2rem;
+  border-radius: .3rem;
 }
 
 .menu li a:hover {
@@ -41,7 +40,7 @@ header .menu {
 }
 
 main {
-  width: 100vw;
+  width: 100%;
   height: 90vh;
   display: flex;
 }
@@ -56,6 +55,19 @@ main .arte {
   z-index: -1;
 }
 
+#logo {
+  height: 25vh;
+  margin-left: 8rem;
+}
+
+#poligono-design-1 {
+  height: 50rem;
+}
+
+#poligono-design-2 {
+  height: 30rem;
+}
+
 main .formulario {
   width: 50vw;
   height: 90vh;
@@ -68,8 +80,7 @@ main .formulario {
   width: 45rem;
   height: 40rem;
   padding-top: 5rem;
-  margin-top: 5vh;
-  margin-right: 5vw;
+  margin: 5vh 10vw 1vh 2vw;
   background-color: #EAEAEA;
   border-radius: 1rem;
   display: flex;
@@ -84,14 +95,14 @@ main .formulario {
   flex-direction: column;
 }
 
-.formulario .input-unidade label{
+.formulario .input-unidade label {
   font-size: 2.2rem;
   color: #424242;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 0.2rem;
 }  
 
-.formulario .input-unidade input{
+.formulario .input-unidade input {
   height: 5rem;
   font-size: 2.2rem;
   color: #424242;
@@ -99,9 +110,9 @@ main .formulario {
   border-radius: 0.5rem;
   padding: 1rem;
 }
-
-.formulario input:focus{
+.formulario input:focus {
   outline: none;
+  border: 0.3rem solid #3841bb7e;
 }
 
 .formulario input[type="submit"] {
@@ -109,21 +120,21 @@ main .formulario {
   height: 5.5rem;
   margin-top: 5rem;
   font-size: 2.2rem;
-  font-weight: bolder;
-  border-radius: 1rem;
+  font-weight: 600;
+  border-radius: .8rem;
   border: none;
   color: #FFFFFF;
   background-color: #0FCE50;
   cursor: pointer;
 }
 
-div[class="sign-up"] {
+div.sign-up {
   width: 45rem;
   height: 8rem;
-  margin-top: 5vh;
-  margin-right: 5vw;
+  
+  margin: 1vh 10vw 2vh 2vw;
   font-size: 2.2rem;
-  font-weight: bold;
+  font-weight: 600;
   color: #424242;
   background-color: #EAEAEA;
   border-radius: 1rem;
@@ -131,11 +142,17 @@ div[class="sign-up"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: .2s;
+}
+
+div.sign-up:hover {
+  box-shadow: .3rem .3rem .6em rgb(155, 155, 155);
 }
 
 div[class="sign-up"] a {
   text-decoration: none;
   color: #0FCE50;
+  
 }
 
 #logo {
