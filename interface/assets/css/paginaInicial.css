@@ -60,6 +60,7 @@ main .arte {
   margin-left: 8rem;
 }
 
+
 #poligono-design-1 {
   height: 50rem;
 }
@@ -99,33 +100,42 @@ main .formulario {
   font-size: 2.2rem;
   color: #424242;
   font-weight: 600;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.4rem;
 }  
 
 .formulario .input-unidade input {
   height: 5rem;
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: #424242;
   border: 0.2rem solid #D9D9D9;
   border-radius: 0.5rem;
   padding: 1rem;
+  transition: .2s;
+}
+.formulario input:hover {
+  border: 0.3rem solid #3841bb7e;
 }
 .formulario input:focus {
   outline: none;
-  border: 0.3rem solid #3841bb7e;
+  border: 0.3rem solid #3741cea2;
 }
 
 .formulario input[type="submit"] {
   width: 22.5rem;
   height: 5.5rem;
-  margin-top: 5rem;
+  margin-top: 3rem;
   font-size: 2.2rem;
   font-weight: 600;
   border-radius: .8rem;
   border: none;
   color: #FFFFFF;
   background-color: #0FCE50;
+  transition: .2s;
   cursor: pointer;
+}
+.formulario input[type="submit"]:hover {
+  background-color: #13b94a;
+  /* box-shadow: .8rem .6rem  #32e26d; */
 }
 
 div.sign-up {
