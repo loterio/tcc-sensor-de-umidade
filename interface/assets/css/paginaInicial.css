@@ -8,15 +8,16 @@ header {
 
 header .titulo {
   margin-left: 5vw;
-  font-size: 3.6rem;
-  font-weight: bold;
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: .4rem;
 }
 
 header .menu {
   width: 25rem;
   margin-right: 5vw;
   list-style-type: none;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: bolder;
   display: flex;
   align-items: center;
@@ -26,9 +27,16 @@ header .menu {
 .menu li a {
   text-decoration: none;
   color: black;
+  transition: 0.24s;
+
+  padding: .4rem 1rem;
 }
 
-.menu li .sign-up {
+.menu li a:hover {
+  background-color: #eaeaea;
+}
+
+#sign-up {
   color: #0FCE50;
 }
 
