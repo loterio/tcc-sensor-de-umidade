@@ -11,17 +11,26 @@ header {
 
 header .titulo {
   font-size: 3.6rem;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: .4rem;
   color: #FFFFFF;
 }
 
 header button {
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: #FFFFFF;
   background-color: transparent;
+  padding: 1rem 2.4rem;
+  margin-left: .6rem;
+  border-radius: .4rem;
   border: none;
   cursor: pointer;
   outline: none;
+  transition: .24s;
+}
+header button:hover {
+  background-color:#13b94a;
+  /* color: black; */
 }
 
 main {
@@ -47,6 +56,7 @@ main {
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
+  position: fixed;
 }
 
 .controle span {
@@ -59,7 +69,7 @@ main {
   width: 35vw;
   height: 4rem;
   padding-left: 1rem;
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #424242;
   border: 0.2rem solid #d1d1d1;
   border-radius: 0.5rem;
@@ -71,11 +81,19 @@ main {
   color: #424242;
 }
 
+.controle input:hover {
+  border: 0.3rem solid #3841bb7e;
+}
+.controle input:focus {
+  outline: none;
+  border: 0.3rem solid #3741cea2;
+}
+
 .controle button {
   width: 15rem;
   height: 4rem;
   font-size: 2.2rem;
-  font-weight: bold;
+  font-weight: 600;
   color: #FFFFFF;
   background-color: #0FCE50;
   border: none;
@@ -85,25 +103,34 @@ main {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: .24s;
+}
+.controle button:hover {
+  background-color:#13b94a;
 }
 
 .quadrosTerra {
   width: 80vw;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  margin-top: 12rem;
+  overflow-x: scroll;
 }
 
 .quadroTerra {
   width: 25vw;
   height: 25rem;
-  margin-bottom: 3rem;
+  margin: .8rem;
   border-radius: 0.5rem;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  transition: .24s;
+}
+.quadroTerra:hover {
+  box-shadow: .5rem .5rem 1.4em #d4d4d4;
 }
 
 .quadrosTerra .nome {
@@ -111,12 +138,29 @@ main {
   height: 5rem;
   display: flex;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.quadroTerra-head {
+  display: flex;
+  align-items: center;
 }
 
-.quadrosTerra img {
+.quadroTerra-head .info {
+  height: 2.5rem;
+}
+
+.quadroTerra-head .info-btn {
+  background: transparent;
+  border: none;
+  padding: .5rem;
+}
+
+.quadroTerra .quadroTerra-img {
   width: 20vw;
   height: 18rem;
+  border: 0.4rem solid#F5F5F5;
+  border-radius: .3rem;
 }
 
 .background-modal {
@@ -160,7 +204,7 @@ main {
   margin-bottom: 1rem;
   margin-bottom: 1rem;
   font-size: 3.4rem;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 #novo-quadro-terra {
@@ -170,6 +214,7 @@ main {
 #novo-quadro-terra .nome-quadro-bloco {
   width: 45vw;
   height: 4rem;
+  font-weight: 600;
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
