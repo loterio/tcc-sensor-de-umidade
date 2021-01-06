@@ -1,6 +1,6 @@
 header {
   width: 100vw;
-  height: 10vh;
+  height: 10vh; 
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,25 +9,24 @@ header {
 header .titulo {
   margin-left: 5vw;
   font-size: 3.6rem;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: .4rem;
 }
 
 main {
   width: 100vw;
   height: 90vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 .arte {
   width: 100vw;
-  height: 97vh;
-  position: fixed;
-  top: 3vh;
-  left: 0;
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 1rem 0;
 }
 
 main .formulario {
@@ -42,7 +41,7 @@ main .formulario {
 .formulario form {
   width: 45rem;
   height: 37rem;
-  margin-top: 7rem;
+  margin-top: 2rem;
   padding-top: 2rem;
   background-color: #EAEAEA;
   border-radius: 1rem;
@@ -61,8 +60,8 @@ main .formulario {
 .formulario .input-unidade label {
   font-size: 2.2rem;
   color: #424242;
-  font-weight: bold;
-  margin-bottom: 0.2rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
 }
 
 .formulario .input-unidade input {
@@ -74,30 +73,38 @@ main .formulario {
   padding: 1rem;
 }
 
+.formulario input:hover {
+  border: 0.3rem solid #3841bb7e;
+}
 .formulario input:focus {
   outline: none;
+  border: 0.3rem solid #3741cea2;
 }
 
 .formulario input[type="submit"] {
   width: 22.5rem;
   height: 5.5rem;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   font-size: 2.2rem;
-  font-weight: bolder;
+  font-weight: 600;
   border-radius: 1rem;
   border: none;
   color: #FFFFFF;
   background-color: #0FCE50;
   outline: none;
+  transition: .2s;
   cursor: pointer;
 }
+.formulario input[type="submit"]:hover {
+  background-color: #13b94a;
+}
 
-div[class="sign-in"] {
+div.sign-in {
   width: 45rem;
   height: 8rem;
   margin-top: 5vh;
   font-size: 2.2rem;
-  font-weight: bold;
+  font-weight: 600;
   color: #424242;
   background-color: #EAEAEA;
   border-radius: 1rem;
@@ -107,24 +114,30 @@ div[class="sign-in"] {
   justify-content: center;
 }
 
-div[class="sign-in"] a {
+div.sign-in:hover {
+  box-shadow: .3rem .3rem .6em rgb(155, 155, 155);
+}
+
+div.sign-in a {
   text-decoration: none;
   color: #0FCE50;
 }
 
 #logo {
-  height: 15vh;
+  height: 14rem;
   top: 3vh;
   left: 43vw;
 }
 
 #poligono-design-1 {
+  height: 30vw;
   position: fixed;
   left: 0;
   bottom: 0;
 }
 
 #poligono-design-2 {
+  height: 20vw;
   position: fixed;
   left: 0;
   bottom: 0;
