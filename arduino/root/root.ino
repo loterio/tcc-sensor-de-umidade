@@ -25,7 +25,7 @@ const unsigned long DELAY_ESTABILIZAR = 5000;
 const unsigned long DELAY_ENVIAR_NRF = 100;
 const unsigned long DELAY_RECEBER_NRF = 100;
 const unsigned long TEMPO_ESPERANDO_DADO_SENSOR = 20000;
-const unsigned long TEMPO_ENVIAR_DADO_SENSOR = 20000;
+const unsigned long TEMPO_ENVIAR_DADO_SENSOR = 5000;
 const unsigned long TEMPO_ENVIANDO_AUTORIZACAO = 20000;
 
 const unsigned long DELAY_ENVIAR_LORA = 200;
@@ -60,7 +60,7 @@ String recebeDadoJsonLora(unsigned long tempoEsperandoDado);
 //=========================================
 
 void setup() {
-  //Serial.begin(9600);
+  Serial.begin(9600);
   lora.begin(9600);
   radio.begin();
   radio.openWritingPipe(addresses[1]);

@@ -23,11 +23,11 @@ const unsigned long DELAY_ESTABILIZAR = 5000;
 
 const unsigned long DELAY_ENVIAR_NRF = 100;
 const unsigned long DELAY_RECEBER_NRF = 100;
-const unsigned long TEMPO_TENTANDO_ENVIAR = 30000;
+const unsigned long TEMPO_TENTANDO_ENVIAR = 10000;
 const unsigned long TEMPO_ESPERANDO_DADO_ROOT = 30000;
 const unsigned long TEMPO_ESPERANDO_AUTORIZACAO = 30000;
-const unsigned long DELAY_SUCESSO = 60000;
-const unsigned long DELAY_MINIMO_INSUCESSO = 15000;
+const unsigned long DELAY_SUCESSO = 120000;
+const unsigned long DELAY_MINIMO_INSUCESSO = 10000;
 const unsigned long DELAY_MAXIMO_INSUCESSO = 30000;
 
 int idSensor;
