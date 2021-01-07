@@ -1,22 +1,23 @@
 header {
-  width: 100%;
+  width: 100vw;
   height: 10vh;
+  padding: 0 5vw 0 5vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 10rem;
 }
 
 header .titulo {
-  font-size: 4rem;
-  font-weight: 700;
+  font-size: 3.6rem;
+  font-weight: bold;
   letter-spacing: .4rem;
 }
 
 header .menu {
-  width: 25rem;
+  width: 30rem;
+  height: 10vh;
   list-style-type: none;
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -40,41 +41,42 @@ header .menu {
 }
 
 main {
-  width: 100%;
+  width: 100vw;
   height: 90vh;
   display: flex;
-}
-
-main .arte {
-  width: 50vw;
-  height: 90vh;
 }
 
 .arte img {
   position: fixed;
-  z-index: -1;
 }
 
 #logo {
-  height: 25vh;
-  margin-left: 8rem;
+  width: 25vw;
+  margin-left: 10vh;
+  top: 25vh;
+  left: 10vw;
 }
 
 
 #poligono-design-1 {
-  height: 50rem;
+  width: 66vw;
+  left: 0;
+  bottom: 0;
 }
 
 #poligono-design-2 {
-  height: 30rem;
+  width: 55vw;
+  left: 0;
+  bottom: 0;
 }
 
 main .formulario {
-  width: 50vw;
+  width: 100vw;
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  z-index: 10;
 }
 
 .formulario form {
@@ -164,18 +166,22 @@ div[class="sign-up"] a {
   
 }
 
-#logo {
-  width: 30vw;
-  top: 25vh;
-  left: 15vw;
+/* html {
+  font-size: 8px;
 }
 
-#poligono-design-1 {
-  left: 0;
-  bottom: 0;
+@media (min-width: 1024px) {
+  html {
+    font-size: calc(8px + (17.6 - 8) * ((100vw - 1024) / (2560 - 1024)));
+  }
 }
 
-#poligono-design-2 {
-  left: 0;
-  bottom: 0;
-}
+@media (min-width: 2560px) {
+  html {
+    font-size: 17.6px;
+  }
+} */
+/* max-size -  17.6px;*/
+/* min-size -  8px;*/
+
+
