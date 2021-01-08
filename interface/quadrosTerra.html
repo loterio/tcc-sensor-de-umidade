@@ -22,19 +22,20 @@
 		<span class="titulo">SMUS</span>
 		<ul>
 			<button name="ajuda">Ajuda</button>
-			<button name="perfil" onclick="iniciaModal('dados-usuario')">Perfil</button>
+			<button name="perfil" id="dados-usuario-button">Perfil</button>
 		</ul>
 	</header>
 	<main>
-		<div class="controle">
-			<span>Quadros de Terra</span>
-			<input type="text" name="busca" placeholder="Buscar" autocomplete="off">
-			<button id="novo-quadro-terra-button" name="novoQuadroTerra" onclick="iniciaModal('novo-quadro-terra')">
-				+ Novo
-			</button>
+		<div class="controle-background">
+			<div class="controle">
+				<span>Quadros de Terra</span>
+				<input type="text" name="busca" placeholder="Buscar" autocomplete="off">
+				<button id="novo-quadro-terra-button" name="novoQuadroTerra">
+					+ Novo
+				</button>
+			</div>
 		</div>
 		<div class="quadrosTerra">
-
 			<div class="quadroTerra">
 				<div class="quadroTerra-head">
 					<span class="nome">Araucária</span>
@@ -44,146 +45,6 @@
 				</div>
 				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
 			</div>
-
-			<div class="quadroTerra">
-				<div class="quadroTerra-head">
-					<span class="nome">Araucária</span>
-					<button class="info-btn">
-						<img class="info" src="../interface/assets/img/info.svg" alt="information">
-					</button>
-				</div>
-				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<div class="quadroTerra-head">
-					<span class="nome">Araucária</span>
-					<button class="info-btn">
-						<img class="info" src="../interface/assets/img/info.svg" alt="information">
-					</button>
-				</div>
-				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<div class="quadroTerra-head">
-					<span class="nome">Araucária</span>
-					<button class="info-btn">
-						<img class="info" src="../interface/assets/img/info.svg" alt="information">
-					</button>
-				</div>
-				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<div class="quadroTerra-head">
-					<span class="nome">Araucária</span>
-					<button class="info-btn">
-						<img class="info" src="../interface/assets/img/info.svg" alt="information">
-					</button>
-				</div>
-				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<div class="quadroTerra-head">
-					<span class="nome">Araucária</span>
-					<button class="info-btn">
-						<img class="info" src="../interface/assets/img/info.svg" alt="information">
-					</button>
-				</div>
-				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<div class="quadroTerra-head">
-					<span class="nome">Araucária</span>
-					<button class="info-btn">
-						<img class="info" src="../interface/assets/img/info.svg" alt="information">
-					</button>
-				</div>
-				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<div class="quadroTerra-head">
-					<span class="nome">Araucária</span>
-					<button class="info-btn">
-						<img class="info" src="../interface/assets/img/info.svg" alt="information">
-					</button>
-				</div>
-				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<div class="quadroTerra-head">
-					<span class="nome">Araucária</span>
-					<button class="info-btn">
-						<img class="info" src="../interface/assets/img/info.svg" alt="information">
-					</button>
-				</div>
-				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<div class="quadroTerra-head">
-					<span class="nome">Araucária</span>
-					<button class="info-btn">
-						<img class="info" src="../interface/assets/img/info.svg" alt="information">
-					</button>
-				</div>
-				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<div class="quadroTerra-head">
-					<span class="nome">Araucária</span>
-					<button class="info-btn">
-						<img class="info" src="../interface/assets/img/info.svg" alt="information">
-					</button>
-				</div>
-				<img class="quadroTerra-img" src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<!-- <div class="quadroTerra">
-				<span class="nome">Araucária</span>
-				<img src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<span class="nome">Araucária</span>
-				<img src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<span class="nome">Araucária</span>
-				<img src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<span class="nome">Araucária</span>
-				<img src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-			<div class="quadroTerra">
-				<span class="nome">Araucária</span>
-				<img src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<span class="nome">Araucária</span>
-				<img src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<span class="nome">Araucária</span>
-				<img src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div>
-
-			<div class="quadroTerra">
-				<span class="nome">Araucária</span>
-				<img src="../DB/imgQuadroTerra/araucaria.jpg" alt="">
-			</div> -->
-
 		</div>
 	</main>
 
@@ -193,8 +54,8 @@
 			<span class="nome-modal">Novo Quadro de Terra</span>
 			<form action="" method="post" autocomplete="off">
 				<div class="nome-quadro-bloco">
-					<label for="nome">Nome</label>
-					<input type="text" name="nome" id="nome" placeholder="Insira o nome">
+					<label for="nome-quadro">Nome</label>
+					<input type="text" name="nome" id="nome-quadro" placeholder="Insira o nome">
 				</div>
 				<div class="mapa-bloco">
 					<label>Defina os limites do Terreno</label>

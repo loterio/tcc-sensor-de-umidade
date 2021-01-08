@@ -99,7 +99,7 @@ main .formulario {
 }
 
 .formulario .input-unidade label {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   color: #424242;
   font-weight: 600;
   margin-bottom: 0.4rem;
@@ -107,26 +107,27 @@ main .formulario {
 
 .formulario .input-unidade input {
   height: 5rem;
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #424242;
   border: 0.2rem solid #D9D9D9;
   border-radius: 0.5rem;
   padding: 1rem;
   transition: .2s;
 }
+
 .formulario input:hover {
-  border: 0.3rem solid #3841bb7e;
+  border: 0.2rem solid #c8c8c8;
 }
 .formulario input:focus {
   outline: none;
-  border: 0.3rem solid #3741cea2;
+  border: 0.2rem solid #afafaf;
 }
 
 .formulario input[type="submit"] {
   width: 22.5rem;
   height: 5.5rem;
   margin-top: 3rem;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 600;
   border-radius: .8rem;
   border: none;
@@ -137,14 +138,14 @@ main .formulario {
 }
 .formulario input[type="submit"]:hover {
   background-color: #13b94a;
-  /* box-shadow: .8rem .6rem  #32e26d; */
+  box-shadow: .8rem .6rem  #32e26d;
 }
 
 div.sign-up {
   width: 45rem;
   height: 8rem;
   margin: 1vh 10vw 2vh 2vw;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 600;
   color: #424242;
   background-color: #EAEAEA;
@@ -163,25 +164,7 @@ div.sign-up:hover {
 div[class="sign-up"] a {
   text-decoration: none;
   color: #0FCE50;
-  
 }
 
-/* html {
-  font-size: 8px;
-}
-
-@media (min-width: 1024px) {
-  html {
-    font-size: calc(8px + (17.6 - 8) * ((100vw - 1024) / (2560 - 1024)));
-  }
-}
-
-@media (min-width: 2560px) {
-  html {
-    font-size: 17.6px;
-  }
-} */
-/* max-size -  17.6px;*/
-/* min-size -  8px;*/
 
 

@@ -5,22 +5,21 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 5vw;
-  padding-right: 5vw;
+  padding: 0 5vw 0 5vw;
 }
 
 header .titulo {
   font-size: 3.6rem;
-  font-weight: 700;
+  font-weight: bold;
   letter-spacing: .4rem;
   color: #FFFFFF;
 }
 
 header button {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #FFFFFF;
   background-color: transparent;
-  padding: 1rem 2.4rem;
+  padding: 0.5rem 2.4rem;
   margin-left: .6rem;
   border-radius: .4rem;
   border: none;
@@ -28,9 +27,9 @@ header button {
   outline: none;
   transition: .24s;
 }
+
 header button:hover {
-  background-color:#13b94a;
-  /* color: black; */
+  background-color: #13b94a;
 }
 
 main {
@@ -43,33 +42,38 @@ main {
   overflow-y: scroll;
 }
 
+.controle-background {
+  width: 80vw;
+  height: 20vh;
+  background-color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+}
+
 .controle {
   width: 80vw;
-  height: 7rem;
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  padding-left: 2vw;
-  padding-right: 2vw;
+  height: 8rem;
+  padding: 0 2vw;
   border-radius: 0.5rem;
   background-color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-shrink: 0;
-  position: fixed;
 }
 
 .controle span {
-  font-size: 3.2rem;
+  font-size: 3.6rem;
   font-weight: 600;
   color: #424242;
 }
 
 .controle input {
   width: 35vw;
-  height: 4rem;
+  height: 5rem;
   padding-left: 1rem;
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #424242;
   border: 0.2rem solid #d1d1d1;
   border-radius: 0.5rem;
@@ -82,17 +86,20 @@ main {
 }
 
 .controle input:hover {
-  border: 0.3rem solid #3841bb7e;
+  border: 0.2rem solid #c2c2c2;
 }
+
 .controle input:focus {
   outline: none;
-  border: 0.3rem solid #3741cea2;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
 }
 
 .controle button {
   width: 15rem;
-  height: 4rem;
-  font-size: 2.2rem;
+  height: 5rem;
+  font-size: 2.4rem;
   font-weight: 600;
   color: #FFFFFF;
   background-color: #0FCE50;
@@ -105,22 +112,23 @@ main {
   cursor: pointer;
   transition: .24s;
 }
+
 .controle button:hover {
-  background-color:#13b94a;
+  background-color: #13b94a;
 }
 
 .quadrosTerra {
   width: 80vw;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 12rem;
-  overflow-x: scroll;
+  max-height: 70vh;
+  display: grid;
+  grid-template-columns: 25vw 25vw 25vw;
+  gap: 2.5vw;
+  margin-top: 20vh;
 }
 
 .quadroTerra {
   width: 25vw;
   height: 25rem;
-  margin: .8rem;
   border-radius: 0.5rem;
   background-color: #ffffff;
   display: flex;
@@ -129,6 +137,7 @@ main {
   cursor: pointer;
   transition: .24s;
 }
+
 .quadroTerra:hover {
   box-shadow: .5rem .5rem 1.4em #d4d4d4;
 }
@@ -138,9 +147,10 @@ main {
   height: 5rem;
   display: flex;
   align-items: center;
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 600;
 }
+
 .quadroTerra-head {
   display: flex;
   align-items: center;
@@ -187,7 +197,7 @@ main {
   display: none;
 }
 
-.modal form{
+.modal form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -209,6 +219,8 @@ main {
 
 #novo-quadro-terra {
   padding: 1rem 0 1rem 0;
+  max-height: 95vh;
+  overflow-y: scroll;
 }
 
 #novo-quadro-terra .nome-quadro-bloco {
@@ -229,7 +241,7 @@ main {
   height: 100%;
   border-radius: 0.5rem 0 0 0.5rem;
   border-right: 0.3rem solid #C9C9C9;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -243,7 +255,7 @@ main {
   border: none;
   border-radius: 0 0.5rem 0.5rem 0;
   outline: none;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
 }
 
 #novo-quadro-terra .nome-quadro-bloco input::placeholder {
@@ -264,7 +276,7 @@ main {
 
 #novo-quadro-terra .mapa-bloco label {
   width: 40vw;
-  font-size: 2rem;
+  font-size: 1.8rem;
   padding: 0.5rem 0 0.5rem 0;
 }
 
@@ -294,8 +306,14 @@ main {
 
 .imagem-quadro-bloco span {
   margin-left: 3rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
+
+.imagem-quadro-bloco img {
+  width: 5rem;
+  height: 5rem;
+}
+
 .imagem-quadro-bloco input {
   display: none;
 }
@@ -303,7 +321,7 @@ main {
 .umidade-ideal-bloco {
   width: 22vw;
   height: 7rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   border-radius: 0.5rem;
   background-color: white;
   padding: 0 2.5vw 0 2.5vw;
@@ -313,8 +331,8 @@ main {
   cursor: pointer;
 }
 
-.umidade-ideal-bloco label{
-  margin-bottom: 1rem;  
+.umidade-ideal-bloco label {
+  margin-bottom: 1rem;
 }
 
 #valor-umidade-ideal {
@@ -327,7 +345,7 @@ main {
   width: 100%;
   height: 1rem;
   border-radius: 1rem;
-  background-color:#0077ff;
+  background-color: #0077ff;
   outline: none;
 }
 
@@ -353,7 +371,7 @@ main {
   width: 22.5rem;
   height: 5.5rem;
   margin: 2rem 0 1rem 0;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: bolder;
   border-radius: 1rem;
   border: none;
@@ -375,16 +393,16 @@ main {
   flex-direction: column;
 }
 
-#dados-usuario .input-unidade label{
-  font-size: 2.2rem;
+#dados-usuario .input-unidade label {
+  font-size: 2.4rem;
   color: #424242;
   font-weight: bold;
   margin-bottom: 1rem;
-}  
+}
 
-#dados-usuario .input-unidade input{
+#dados-usuario .input-unidade input {
   height: 5rem;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   color: #424242;
   border: 0.2rem solid #D9D9D9;
   border-radius: 0.5rem;

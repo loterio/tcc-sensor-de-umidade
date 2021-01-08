@@ -1,25 +1,35 @@
 const rangeInput = document.getElementById('umidade-ideal');
 const rangeOutput = document.getElementById('valor-umidade-ideal');
+const botaoPerfil = document.getElementById('dados-usuario-button');
+const botaoCadastrar = document.getElementById('novo-quadro-terra-button');
+const backgroundModal = document.querySelector(".background-modal");
+const modalDadosUsuario = document.getElementById("dados-usuario");
+const modalCadastroQuadro = document.getElementById("novo-quadro-terra");
+
+botaoPerfil.addEventListener("click", () => {
+  backgroundModal.classList.add('mostrar');
+  modalDadosUsuario.classList.add('mostrar');
+})
+
+botaoCadastrar.addEventListener("click", () => {
+  backgroundModal.classList.add('mostrar');
+  modalCadastroQuadro.classList.add('mostrar');
+})
+
+backgroundModal.addEventListener("click", e => {
+  if (e.target.className == 'background-modal mostrar' || e.target.className == 'fechar icone') {
+    backgroundModal.classList.remove('mostrar');
+    modalDadosUsuario.classList.remove('mostrar');
+    modalCadastroQuadro.classList.remove('mostrar');
+  }
+})
 
 rangeInput.oninput = function () {
   rangeOutput.innerHTML = this.value;
 }
 
-function iniciaModal(idModal) {
-  const backgroundModal = document.querySelector(".background-modal");
-  const modal = document.getElementById(idModal);
-  if (modal) {
-    backgroundModal.classList.add('mostrar');
-    modal.classList.add('mostrar');
-    backgroundModal.addEventListener('click', (e) => {
-      console.log(e.target.className);
-      if (e.target.className == 'background-modal mostrar' || e.target.className == 'fechar icone') {
-        backgroundModal.classList.remove('mostrar');
-        modal.classList.remove('mostrar');
-      }
-    })
-  }
-}
+backgroundModal.classList.add('mostrar');
+modalCadastroQuadro.classList.add('mostrar');
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGVucmlxdWViIiwiYSI6ImNrZ2QwcDJiaTA4dWMydHBlajNxbnpsMjAifQ.C3dVATUIc81b2v4S57j6aw';
 
@@ -72,3 +82,7 @@ function salvaCoords(quadro) {
   });
   document.querySelector("[name='coordenadas-terreno']").value = coordsString;
 }
+
+backgroundModal.classList.remove('mostrar');
+modalDadosUsuario.classList.remove('mostrar');
+modalCadastroQuadro.classList.remove('mostrar');

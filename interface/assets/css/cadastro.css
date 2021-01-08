@@ -1,15 +1,15 @@
 header {
   width: 100vw;
-  height: 10vh; 
+  height: 10vh;
+  padding: 0 5vw 0 5vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 header .titulo {
-  margin-left: 5vw;
   font-size: 3.6rem;
-  font-weight: 700;
+  font-weight: bold;
   letter-spacing: .4rem;
 }
 
@@ -21,28 +21,49 @@ main {
   justify-content: center;
 }
 
-.arte {
+main {
   width: 100vw;
-  align-items: center;
+  height: 90vh;
   display: flex;
-  justify-content: center;
-  margin: 1rem 0 1rem 0;
 }
 
-main .formulario {
+.arte img {
+  position: fixed;
+}
+
+#poligono-design-1 {
+  width: 66vw;
+  left: 0;
+  bottom: 0;
+}
+
+#poligono-design-2 {
+  width: 55vw;
+  left: 0;
+  bottom: 0;
+}
+
+.formulario {
   width: 100vw;
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   z-index: 10;
+}
+
+#logo {
+  width: 20rem;
+  position: fixed;
+  top: 1rem;
 }
 
 .formulario form {
   width: 45rem;
-  height: 37rem;
-  margin-top: 2rem;
+  height: 39rem;
   padding-top: 2rem;
+  margin-top: 5rem;
   background-color: #EAEAEA;
   border-radius: 1rem;
   display: flex;
@@ -52,58 +73,58 @@ main .formulario {
 
 .formulario .input-unidade {
   width: 40rem;
-  height: 9rem;
+  height: 10rem;
   display: flex;
   flex-direction: column;
 }
 
 .formulario .input-unidade label {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   color: #424242;
   font-weight: 600;
   margin-bottom: 0.4rem;
-}
+}  
 
 .formulario .input-unidade input {
   height: 5rem;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   color: #424242;
   border: 0.2rem solid #D9D9D9;
   border-radius: 0.5rem;
   padding: 1rem;
+  transition: .2s;
+}
+.formulario input:hover {
+  border: 0.2rem solid #c8c8c8;
 }
 
-.formulario input:hover {
-  border: 0.3rem solid #3841bb7e;
-}
 .formulario input:focus {
   outline: none;
-  border: 0.3rem solid #3741cea2;
+  border: 0.2rem solid #afafaf;
 }
 
 .formulario input[type="submit"] {
   width: 22.5rem;
   height: 5.5rem;
-  margin-top: 1.2rem;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 600;
-  border-radius: 1rem;
+  border-radius: .8rem;
   border: none;
   color: #FFFFFF;
   background-color: #0FCE50;
-  outline: none;
   transition: .2s;
   cursor: pointer;
 }
 .formulario input[type="submit"]:hover {
   background-color: #13b94a;
+  box-shadow: .8rem .6rem  #32e26d;
 }
 
 div.sign-in {
   width: 45rem;
   height: 8rem;
-  margin-top: 5vh;
-  font-size: 2.2rem;
+  margin: 1rem;
+  font-size: 2.4rem;
   font-weight: 600;
   color: #424242;
   background-color: #EAEAEA;
@@ -112,33 +133,14 @@ div.sign-in {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: .2s;
 }
 
 div.sign-in:hover {
   box-shadow: .3rem .3rem .6em rgb(155, 155, 155);
 }
 
-div.sign-in a {
+div[class="sign-in"] a {
   text-decoration: none;
   color: #0FCE50;
-}
-
-#logo {
-  height: 14rem;
-  top: 3vh;
-  left: 43vw;
-}
-
-#poligono-design-1 {
-  height: 30vw;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-}
-
-#poligono-design-2 {
-  height: 20vw;
-  position: fixed;
-  left: 0;
-  bottom: 0;
 }
