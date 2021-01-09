@@ -63,117 +63,145 @@ main {
   justify-content: space-between;
 }
 
-.controle span {
+.controle img {
+  width: 5rem;
+  cursor: pointer;
+}
+
+.controle #nome-quadro-controle {
   font-size: 3.6rem;
   font-weight: 600;
   color: #424242;
 }
 
-.controle input {
-  width: 35vw;
-  height: 4rem;
-  padding-left: 1rem;
-  font-size: 2.4rem;
-  color: #424242;
-  border: 0.2rem solid #d1d1d1;
-  border-radius: 0.5rem;
-  background-color: #FAFAFA;
-  outline: none;
-}
-
-.controle input::placeholder {
-  color: #424242;
-}
-
-.controle input:hover {
-  border: 0.2rem solid #c2c2c2;
-}
-
-.controle input:focus {
-  outline: none;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
-  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
-}
-
-.controle button {
-  width: 15rem;
-  height: 4rem;
+.controle #umidade-ideal-controle {
   font-size: 2.4rem;
   font-weight: 600;
-  color: #FFFFFF;
-  background-color: #0FCE50;
-  border: none;
-  border-radius: 0.5rem;
-  outline: none;
+  color: #959595;
+}
+
+.controle #umidade-ideal-controle span {
+  color: #2F41E1;
+}
+
+.controle #botoes-controle {
+  width: 25rem;
+  height: 6rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+#botoes-controle button {
+  width: 12rem;
+  height: 5rem;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #959595;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  outline: none;
   cursor: pointer;
-  transition: .24s;
 }
 
-.controle button:hover {
-  background-color: #13b94a;
+#botoes-controle img {
+  height: 3rem;
 }
 
-.quadrosTerra {
+.painel {
   width: 80vw;
-  max-height: 70vh;
-  display: grid;
-  grid-template-columns: 25vw 25vw 25vw;
-  gap: 2.5vw;
+  height: calc(75vh - (7.5vh - 3rem));
+  display: flex;
   margin-top: 15vh;
 }
 
-.quadroTerra {
-  width: 25vw;
-  height: 25rem;
+#mapa-container {
+  width: 40vw;
+  height: 100%;
+  padding: 1rem;
   border-radius: 0.5rem;
-  background-color: #ffffff;
+  background-color: white;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+#sensores {
+  width: 40vw;
+  height: 100%;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 18vw 18vw;
+  gap: 1vw;
+  overflow-y: scroll;
+}
+
+.sensor-card {
+  width: 18vw;
+  height: 45vh;
+  border-radius: 0.5rem;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
-  transition: .24s;
+  justify-content: space-evenly;
 }
 
-.quadroTerra:hover {
-  box-shadow: .5rem .5rem 1.4em #d4d4d4;
-}
-
-.quadrosTerra .nome {
-  width: 20vw;
-  height: 5rem;
-  display: flex;
-  align-items: center;
+.sensor-identificador {
   font-size: 2.4rem;
   font-weight: 600;
 }
 
-.quadroTerra-head {
+.sensor-porcentagem-container {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sensor-porcentagem {
+  font-size: 4.2rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.quadroTerra-head .info {
-  height: 2.5rem;
+.sensor-porcentagem span {
+  font-size: 1.8rem;
+  color: black;
 }
 
-.quadroTerra-head .info-btn {
-  background: transparent;
-  border: none;
-  padding: .5rem;
+.sensor-porcentagem img {
+  width: 5rem;
 }
 
-.quadroTerra .quadroTerra-img {
-  width: 20vw;
-  height: 18rem;
-  border: 0.4rem solid#F5F5F5;
-  border-radius: .3rem;
+.sensor-status {
+  font-size: 2.4rem;
+  font-weight: 600;
 }
 
-.background-modal {
+.teor-umidade-bom {
+  border: 1rem solid blue;
+}
+
+.teor-umidade-seco {
+  border: 1rem solid #EEF222;
+}
+
+.teor-umidade-encharcado {
+  border: 1rem solid #FF0000;
+}
+
+/*.background-modal {
   width: 100vw;
   height: 100vh;
   background-color: #00000047;
@@ -381,34 +409,6 @@ main {
   cursor: pointer;
 }
 
-#dados-usuario {
-  padding: 1rem 0 1rem 0;
-}
-
-#dados-usuario .input-unidade {
-  width: 45vw;
-  height: 9rem;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-#dados-usuario .input-unidade label {
-  font-size: 2.4rem;
-  color: #424242;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-#dados-usuario .input-unidade input {
-  height: 5rem;
-  font-size: 2.4rem;
-  color: #424242;
-  border: 0.2rem solid #D9D9D9;
-  border-radius: 0.5rem;
-  padding: 1rem;
-}
-
 .mostrar {
   display: flex;
-}
+}*/

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/quadroTerra.css">
+
+  <!-- mapbox -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+  <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css"
+    type="text/css" />
+  <title>Quadro de Terra</title>
+</head>
+
+<body>
+  <header>
+    <span class="titulo">SMUS</span>
+    <ul>
+      <button name="ajuda">Ajuda</button>
+      <button name="perfil" id="dados-usuario-button">Perfil</button>
+    </ul>
+  </header>
+  <main>
+    <div class="controle-background">
+      <div class="controle">
+        <img src="assets/img/voltar.svg" alt="voltar">
+        <span id="nome-quadro-controle">Nome quadro Terra</span>
+        <span id="umidade-ideal-controle">Umidade Ideal: <span>25%</span></span>
+        <div id="botoes-controle">
+          <button id="alterar-quadro-button">
+            Alterar
+            <img src="assets/img/editar-neutro.svg" alt="" class="icone-botao">
+          </button>
+          <button id="excluir-quadro-button">
+            Excluir
+            <img src="assets/img/exclui-neutro.svg" alt="" class="icone-botao">
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="painel">
+      <div id="mapa-container">
+        <div id="map"></div>
+      </div>
+      <div id="sensores">
+        <div class="sensor-card">
+          <span class="sensor-identificador">Id Sensor</span>
+          <div class="sensor-porcentagem-container teor-umidade-encharcado">
+            <span class="sensor-porcentagem">
+              85.5
+              <span>% de umidade</span>
+              <img src="assets/img/gota.svg" alt="">
+            </span>
+          </div>
+          <span class="sensor-status">Bom</span>
+        </div>
+        <div class="sensor-card">
+          <span class="sensor-identificador">Id Sensor</span>
+          <div class="sensor-porcentagem-container teor-umidade-encharcado">
+            <span class="sensor-porcentagem">
+              85.5
+              <span>% de umidade</span>
+              <img src="assets/img/gota.svg" alt="">
+            </span>
+          </div>
+          <span class="sensor-status">Bom</span>
+        </div>
+        <div class="sensor-card">
+          <span class="sensor-identificador">Id Sensor</span>
+          <div class="sensor-porcentagem-container teor-umidade-encharcado">
+            <span class="sensor-porcentagem">
+              85.5
+              <span>% de umidade</span>
+              <img src="assets/img/gota.svg" alt="">
+            </span>
+          </div>
+          <span class="sensor-status">Bom</span>
+        </div>
+        <div class="sensor-card">
+          <span class="sensor-identificador">Id Sensor</span>
+          <div class="sensor-porcentagem-container teor-umidade-encharcado">
+            <span class="sensor-porcentagem">
+              85.5
+              <span>% de umidade</span>
+              <img src="assets/img/gota.svg" alt="">
+            </span>
+          </div>
+          <span class="sensor-status">Bom</span>
+        </div>
+        <div class="sensor-card">
+          <span class="sensor-identificador">Id Sensor</span>
+          <div class="sensor-porcentagem-container teor-umidade-encharcado">
+            <span class="sensor-porcentagem">
+              85.5
+              <span>% de umidade</span>
+              <img src="assets/img/gota.svg" alt="">
+            </span>
+          </div>
+          <span class="sensor-status">Bom</span>
+        </div>
+        <div class="sensor-card" id="id-sensor-1">
+          <span class="sensor-identificador">Id Sensor</span>
+          <div class="sensor-porcentagem-container teor-umidade-bom">
+            <span class="sensor-porcentagem">
+              85.5
+              <span>% de umidade</span>
+              <img src="assets/img/gota.svg" alt="">
+            </span>
+          </div>
+          <span class="sensor-status">Bom</span>
+        </div>
+      </div>
+  </main>
+
+  <!-- <div class="background-modal">
+		<div id="novo-quadro-terra" class="modal">
+			<img src="assets/img/fechar.svg" alt="" class="fechar icone">
+			<span class="nome-modal">Novo Quadro de Terra</span>
+			<form action="" method="post" autocomplete="off">
+				<div class="nome-quadro-bloco">
+					<label for="nome-quadro">Nome</label>
+					<input type="text" name="nome" id="nome-quadro" placeholder="Insira o nome">
+				</div>
+				<div class="mapa-bloco">
+					<label>Defina os limites do Terreno</label>
+					<div class="mapa" id="map"></div>
+					<input type="hidden" name="coordenadas-terreno">
+				</div>
+				<div class="input-pequeno">
+					<div class="imagem-quadro-bloco">
+						<label for="imagem-quadro">
+							<img src="assets/img/imgIcone.svg" alt="">
+							<span>Imagem do Terreno</span>
+						</label>
+						<input type="file" id="imagem-quadro" name="imagem-quadro">
+					</div>
+					<div class="umidade-ideal-bloco">
+						<label for="umidade-ideal">Faixa de umidade ideal: <span id="valor-umidade-ideal">50</span>%</label>
+						<input type="range" name="umidade-ideal" id="umidade-ideal" min="0" max="100">
+					</div>
+				</div>
+				<input type="submit" value="Criar">
+			</form>
+		</div>
+		<div id="dados-usuario" class="modal">
+			<img src="assets/img/fechar.svg" alt="" class="fechar icone">
+			<span class="nome-modal">Dados Usuário</span>
+			<form action="" method="post" autocomplete="off">
+				<div class="input-unidade">
+					<label for="nome">Nome</label>
+					<input type="text" name="nome" id="nome">
+				</div>
+				<div class="input-unidade">
+					<label for="email">Email</label>
+					<input type="email" name="email" id="email">
+				</div>
+				<div class="input-unidade">
+					<label for="senha">Senha</label>
+					<input type="password" name="pw" id="senha">
+				</div>
+				<input type="submit" value="Salvar">
+			</form>
+		</div>
+	</div> -->
+  <script src="assets/js-interacao/quadroTerra.js"></script>
+</body>
+
+</html>

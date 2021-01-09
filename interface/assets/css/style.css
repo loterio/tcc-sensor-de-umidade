@@ -16,3 +16,7 @@ html {
     width: 2rem;
     height: 2rem;
 }
+
+#voltar-icone {
+    fill: aqua;
+}
