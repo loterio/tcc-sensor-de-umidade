@@ -91,9 +91,9 @@ main {
 
 .controle input:focus {
   outline: none;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
-  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
+  -webkit-box-shadow: 2px 2px 6px 0px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow: 2px 2px 6px 0px rgba(50, 50, 50, 0.3);
+  box-shadow: 2px 2px 6px 0px rgba(50, 50, 50, 0.3);
 }
 
 .controle button {
@@ -132,6 +132,7 @@ main {
   border-radius: 0.5rem;
   background-color: #ffffff;
   display: flex;
+  color: #424242;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
@@ -242,6 +243,7 @@ main {
   border-radius: 0.5rem 0 0 0.5rem;
   border-right: 0.3rem solid #C9C9C9;
   font-size: 2.4rem;
+  color: #424242;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -251,8 +253,8 @@ main {
   width: 100%;
   height: 100%;
   padding-left: 2rem;
-  color: #161616;
   border: none;
+  color: #424242;
   border-radius: 0 0.5rem 0.5rem 0;
   outline: none;
   font-size: 2.4rem;
@@ -277,6 +279,7 @@ main {
 #novo-quadro-terra .mapa-bloco label {
   width: 40vw;
   font-size: 1.8rem;
+  color: #424242;
   padding: 0.5rem 0 0.5rem 0;
 }
 
@@ -284,6 +287,7 @@ main {
   width: 40vw;
   height: 25rem;
   z-index: 20;
+  border-radius: .2rem;
 }
 
 .input-pequeno {
@@ -300,6 +304,8 @@ main {
   background-color: white;
   display: flex;
   align-items: center;
+  color: #424242;
+  font-size: 600;
   padding: 0 2.5vw 0 2.5vw;
   cursor: pointer;
 }
@@ -333,19 +339,22 @@ main {
 
 .umidade-ideal-bloco label {
   margin-bottom: 1rem;
+  font-size: 1.6rem;
 }
 
 #valor-umidade-ideal {
-  color: #0077ff;
+  color: #312DE3;
+  font-weight: 600;
+  font-size: 1.8rem;
 }
 
 .umidade-ideal-bloco input[type="range"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   width: 100%;
-  height: 1rem;
+  height: .6rem;
   border-radius: 1rem;
-  background-color: #0077ff;
+  background-color: #312DE3;
   outline: none;
 }
 
@@ -354,8 +363,8 @@ main {
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 50%;
-  background-color: white;
-  border: 0.2rem solid #0077ff;
+  background-color: rgb(13, 99, 179);
+  border: 0.2rem solid #999999;
 }
 
 .umidade-ideal-bloco input[type="range"]::-moz-range-thumb {
@@ -363,8 +372,8 @@ main {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background-color: white;
-  border: 0.2rem solid #0077ff;
+  background-color: #424242;
+  border: 0.1rem solid #424242;
 }
 
 .modal input[type="submit"] {
