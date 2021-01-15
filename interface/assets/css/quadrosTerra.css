@@ -14,21 +14,27 @@ header .titulo {
   letter-spacing: .4rem;
   color: #FFFFFF;
 }
-
-header button {
+ul {
+  display: flex;
+}
+ul li {
   font-size: 2.4rem;
-  color: #FFFFFF;
   background-color: transparent;
-  padding: 0.5rem 2.4rem;
   margin-left: .6rem;
-  border-radius: .4rem;
   border: none;
   cursor: pointer;
   outline: none;
   transition: .24s;
+  list-style: none;
+}
+ul li a {
+  border-radius: .4rem;
+  padding: 0.5rem 2.4rem;
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
-header button:hover {
+ul li a:hover {
   background-color: #13b94a;
 }
 
@@ -73,7 +79,7 @@ main {
   width: 35vw;
   height: 4rem;
   padding-left: 1rem;
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: #424242;
   border: 0.2rem solid #d1d1d1;
   border-radius: 0.5rem;

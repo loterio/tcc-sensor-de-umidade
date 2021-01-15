@@ -1,0 +1,106 @@
+header {
+    width: 100%;
+    height: 10vh;
+    background-color: #0FCE50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw 0 5vw;
+}
+  
+header .titulo {
+    font-size: 3.6rem;
+    font-weight: bold;
+    letter-spacing: .4rem;
+    color: #FFFFFF;
+}
+  
+header button {
+    font-size: 2.2rem;
+    color: #FFFFFF;
+    background-color: transparent;
+    padding: 0.5rem 2.4rem;
+    margin-left: .6rem;
+    border-radius: .4rem;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: .24s;
+}
+  
+header button:hover {
+    background-color: #13b94a;
+}
+
+nav {
+    width: 100%;
+    height: 6rem;
+    background-color: #ffffff;
+    border-radius: .4rem;
+    padding: 0rem 4rem;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+} 
+nav .nav-titulo {
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: #424242;
+    margin-right: 20rem;
+}
+.nav-lista {
+    display: flex;
+    list-style: none;
+    width: auto;
+}
+.nav-item {
+    padding: .5rem 2rem;
+    margin: 0 .5rem;
+    transition: .2s;
+    font-size: 1.8rem;
+    border-radius: .3rem;
+}
+.nav-item a {
+    text-decoration: none;
+    color: #424242;
+}
+.nav-item:hover {
+    background-color: #f5f5f5;
+}
+.controle {
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 2rem 10rem;  
+}
+.controle img {
+    width: 4rem;
+    cursor: pointer;
+    margin-right: 4rem;
+}
+
+main {
+    padding: 2rem 10rem 4rem 10rem;
+    background-color: #f5f5f5;
+}
+.ajuda-topicos {
+    min-height: 90vh;
+    background-color: #ffffff;
+    font-size: 5rem;
+    border-radius: .4rem;
+    padding: 8rem 6rem;
+    color: #424242;
+} 
+.topico .topico-titulo {
+    font-weight: 600;
+}
+.topico .topico-texto {
+    margin: 2rem 0 4rem 0;
+    font-size: 2rem;
+}
+
+.painel {
+    width: 80vw;
+    height: calc(75vh - (7.5vh - 3rem));
+    display: flex;
+    margin-top: 15vh;
+}

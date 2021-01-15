@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/ajuda.css">
+
+  <!-- mapbox -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+  <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css"
+    type="text/css" />
+  <title>Ajuda</title>
+</head>
+
+<body>
+    <header>
+        <span class="titulo">SMUS</span>
+        <ul>
+            <button name="ajuda">Ajuda</button>
+            <button name="perfil" id="dados-usuario-button">Perfil</button>
+        </ul>
+    </header>
+
+    <div class="controle">
+        <nav>
+            <a href="quadrosTerra.html">
+                <img src="assets/img/voltar.svg" alt="voltar">
+            </a>
+            <span class="nav-titulo">Ajuda</span>
+            <ul class="nav-lista">
+                <li class="nav-item"><a href="#quadro-terra">Quadro de terra</a></li>
+                <li class="nav-item"><a href="#sensores">Sensores</a></li>
+                <li class="nav-item"><a href="#mapa">Mapa</a></li>
+                <li class="nav-item"><a href="#umidade-ideal">Umidade Ideal</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="">
+        <div class="ajuda-topicos">
+            
+            <div class="topico" id="quadro-terra">
+                <span class="topico-titulo"># Quadro de terra</span>
+                <p class="topico-texto">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Maecenas at massa nec erat efficitur fermentum nec eget magna. 
+                    Morbi pretium finibus nisl, sed euismod enim cursus vel. Ut sed elementum odio. 
+                    Quisque gravida magna at condimentum varius. Suspendisse leo purus, congue sed elementum a, 
+                    entesque sed enim. Nunc rhoncus libero sed augue fringilla, ut lacinia massa vestibulum.
+                    Morbi viverra ligula vel ipsum pretium, porta porttitor ligula euismod. 
+                    Suspendisse mattis neque est. Donec iaculis laoreet nunc et ornare. 
+                    Nulla ut ligula ac mi fringilla laoreet vitae malesuada sapien.
+                    <br><br>
+                    Nullam tincidunt justo ut est tempus, ac suscipit velit imperdiet. 
+                    Mauris feugiat sit amet magna id semper. Nulla molestie sem vel eros tristique fringilla. 
+                    Nam eu eros justo. Quisque ut libero nisi. Etiam dolor nisi, rhoncus eget enim nec, porttitor 
+                    ornare nulla. 
+                </p>
+            </div>
+
+            <div class="topico" id="sensores">
+                <span class="topico-titulo"># Sensores</span>
+                <p class="topico-texto">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Maecenas at massa nec erat efficitur fermentum nec eget magna. 
+                    Morbi pretium finibus nisl, sed euismod enim cursus vel. Ut sed elementum odio. 
+                    Quisque gravida magna at condimentum varius. Suspendisse leo purus, congue sed elementum a, 
+                    entesque sed enim. Nunc rhoncus libero sed augue fringilla, ut lacinia massa vestibulum.
+                </p>
+            </div>
+
+            <div class="topico" id="mapa">
+                <span class="topico-titulo"># Mapa</span>
+                <p class="topico-texto">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Maecenas at massa nec erat efficitur fermentum nec eget magna. 
+                    Morbi pretium finibus nisl, sed euismod enim cursus vel. 
+                    <br><br>
+                    Ut sed elementum odio. Quisque gravida magna at condimentum varius. 
+                    Suspendisse leo purus, congue sed elementum a, 
+                    entesque sed enim. Nunc rhoncus libero sed augue fringilla, ut lacinia massa vestibulum.
+                </p>
+            </div>
+
+            <div class="topico" id="umidade-ideal">
+                <span class="topico-titulo"># Umidade ideal</span>
+                <p class="topico-texto">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Maecenas at massa nec erat efficitur fermentum nec eget magna. 
+                    Morbi pretium finibus nisl, sed euismod enim cursus vel. 
+                </p>
+            </div>
+
+        </div>      
+    </main>
+
+  <script src="assets/js-interacao/quadroTerra.js"></script>
+</body>
+
+</html>
